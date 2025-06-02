@@ -1,0 +1,209 @@
+[gd_scene load_steps=27 format=3 uid="uid://dbn2fcne2kbxm"]
+
+[ext_resource type="FontFile" uid="uid://cuedit6mofbc7" path="res://fonts/Oswald-Regular.ttf" id="1_af32l"]
+[ext_resource type="Script" path="res://scripts/LineEdit.gd" id="1_hothc"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_k0oco"]
+[ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_g7tbj"]
+[ext_resource type="Texture2D" uid="uid://dbqlo4xfgpsti" path="res://assets/background.png" id="3_0p1jm"]
+[ext_resource type="FontFile" uid="uid://c7fjr8u8dk58u" path="res://fonts/Oswald-VariableFont_wght.ttf" id="4_fvjdd"]
+[ext_resource type="Texture2D" uid="uid://cbkfwvyqqktoh" path="res://assets/input_area.png" id="5_1wbqd"]
+[ext_resource type="Texture2D" uid="uid://dgvkeo6w8ceyl" path="res://assets/rotation-4.png" id="6_bc1l1"]
+[ext_resource type="PackedScene" uid="uid://btlywuhhfxhue" path="res://scenes/info.tscn" id="7_mkhgp"]
+[ext_resource type="Texture2D" uid="uid://deuobny742e3y" path="res://assets/setting.png" id="8_6aaly"]
+[ext_resource type="Script" path="res://settings.gd" id="9_slii7"]
+[ext_resource type="AudioStream" uid="uid://je56yuspmr2j" path="res://sounds/click.mp3" id="10_4nj0u"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mohrj"]
+content_margin_left = 8.0
+texture = ExtResource("2_g7tbj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_32wl7"]
+texture = ExtResource("3_0p1jm")
+region_rect = Rect2(3, 0.588997, 1383, 668)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i4524"]
+content_margin_left = 20.0
+content_margin_top = 8.0
+content_margin_bottom = 20.0
+texture = ExtResource("5_1wbqd")
+region_rect = Rect2(-1.5, -3, 1386, 103)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xla4k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6ny0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2q3sr"]
+bg_color = Color(0.301961, 0.0901961, 0.721569, 0.52549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxg7b"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.654902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7t62"]
+bg_color = Color(0.301961, 0.0901961, 0.721569, 0.384314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rtk2"]
+bg_color = Color(0.301961, 0.0901961, 0.721569, 0.52549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q85cv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fhrb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7j81"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulthw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67848"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k0oco")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mohrj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 2
+
+[node name="Rows" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="GameInfo" type="PanelContainer" parent="Background/MarginContainer/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_32wl7")
+
+[node name="CenterContainer" type="MarginContainer" parent="Background/MarginContainer/Rows/GameInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 200
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/Rows/GameInfo/CenterContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 110
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer/Rows/GameInfo"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="Background/MarginContainer/Rows/GameInfo/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.619608, 0.47451, 0.92549, 1)
+theme_override_fonts/font = ExtResource("1_af32l")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputArea" type="PanelContainer" parent="Background/MarginContainer/Rows"]
+custom_minimum_size = Vector2(2.08165e-12, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_i4524")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/Rows/InputArea"]
+layout_mode = 2
+
+[node name="Caret" type="Label" parent="Background/MarginContainer/Rows/InputArea/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.619608, 0.47451, 0.929412, 1)
+theme_override_fonts/font = ExtResource("1_af32l")
+theme_override_font_sizes/font_size = 50
+text = " > "
+
+[node name="LineEdit" type="LineEdit" parent="Background/MarginContainer/Rows/InputArea/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.643137, 0.466667, 0.956863, 1)
+theme_override_colors/font_placeholder_color = Color(0.647059, 0.466667, 0.956863, 1)
+theme_override_fonts/font = ExtResource("1_af32l")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xla4k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h6ny0")
+placeholder_text = "Enter Your Numbers"
+script = ExtResource("1_hothc")
+
+[node name="algo_option" type="OptionButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.762153
+anchor_top = 0.029321
+anchor_right = 0.971354
+anchor_bottom = 0.115741
+offset_left = -1.52588e-05
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.627451, 0.552941, 0.752941, 1)
+theme_override_fonts/font = ExtResource("4_fvjdd")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_2q3sr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bxg7b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_f7t62")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1rtk2")
+allow_reselect = true
+metadata/_edit_use_anchors_ = true
+
+[node name="reset" type="Button" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 26.0
+offset_right = 556.0
+offset_bottom = 546.0
+scale = Vector2(0.1, 0.1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_q85cv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5fhrb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i7j81")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ulthw")
+icon = ExtResource("6_bc1l1")
+
+[node name="info" parent="." instance=ExtResource("7_mkhgp")]
+position = Vector2(152, 28)
+
+[node name="settings" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 34.0
+offset_right = 614.0
+offset_bottom = 546.0
+rotation = 0.00892125
+scale = Vector2(0.07, 0.07)
+theme_override_icons/arrow = ExtResource("8_6aaly")
+theme_override_styles/normal = SubResource("StyleBoxFlat_67848")
+flat = true
+allow_reselect = true
+script = ExtResource("9_slii7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_4nj0u")
+
+[connection signal="text_submitted" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/LineEdit" to="Background/MarginContainer/Rows/InputArea/HBoxContainer/LineEdit" method="_on_text_submitted"]
+[connection signal="item_selected" from="algo_option" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="algo_option" to="." method="_on_algo_option_pressed"]
+[connection signal="pressed" from="reset" to="." method="_on_button_pressed"]
+[connection signal="item_selected" from="settings" to="." method="_on_settings_item_selected"]
+[connection signal="pressed" from="settings" to="settings" method="_on_pressed"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://su02mlseynpy"]
+
+[ext_resource type="Script" path="res://scripts/input_response.gd" id="1_8vv8h"]
+[ext_resource type="FontFile" uid="uid://dblhhw6ptaby7" path="res://fonts/Oswald-Regular.ttf" id="1_puvep"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnsba"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.564706, 0.521569, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="InputResponse" type="VBoxContainer"]
+script = ExtResource("1_8vv8h")
+
+[node name="Dispaly" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_puvep")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_tnsba")

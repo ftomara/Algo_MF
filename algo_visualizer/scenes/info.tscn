@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://btlywuhhfxhue"]
+
+[ext_resource type="Texture2D" uid="uid://ny12k1a6ixev" path="res://assets/selectioncopy.jpg" id="1_2siss"]
+[ext_resource type="Script" path="res://scripts/Button.gd" id="2_11wnr"]
+[ext_resource type="Texture2D" uid="uid://6r1c08nq5coq" path="res://assets/insertion.jpg" id="2_r8k54"]
+[ext_resource type="Texture2D" uid="uid://dbutmvx3odar4" path="res://assets/dcopy.jpg" id="3_dnsm4"]
+[ext_resource type="Texture2D" uid="uid://cgaqb3h1rp1ic" path="res://assets/info.png" id="4_ay2gf"]
+[ext_resource type="AudioStream" uid="uid://je56yuspmr2j" path="res://sounds/click.mp3" id="6_t7ybg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m6pt7"]
+texture = ExtResource("1_2siss")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr17f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PopupPanel" type="Window" parent="."]
+position = Vector2i(0, 36)
+size = Vector2i(395, 570)
+visible = false
+theme_override_colors/title_color = Color(0.380392, 0.380392, 0.380392, 1)
+theme_override_colors/title_outline_modulate = Color(0, 0, 0.894118, 1)
+theme_override_styles/embedded_border = SubResource("StyleBoxTexture_m6pt7")
+
+[node name="selection" type="TextureRect" parent="PopupPanel"]
+visible = false
+offset_right = 790.0
+offset_bottom = 1140.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_2siss")
+
+[node name="insertion" type="TextureRect" parent="PopupPanel"]
+visible = false
+offset_right = 790.0
+offset_bottom = 1140.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_r8k54")
+
+[node name="bubble" type="TextureRect" parent="PopupPanel"]
+visible = false
+offset_right = 790.0
+offset_bottom = 1140.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_dnsm4")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 14.0
+offset_top = 5.0
+offset_right = 534.0
+offset_bottom = 525.0
+scale = Vector2(0.07, 0.07)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gr17f")
+icon = ExtResource("4_ay2gf")
+flat = true
+script = ExtResource("2_11wnr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_t7ybg")
+
+[connection signal="close_requested" from="PopupPanel" to="Button" method="_on_popup_panel_close_requested"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
