@@ -8,6 +8,7 @@ var current_edit_node: Control = null
 @onready var line_edit = $NodeValueWindow/LineEdit
 @onready var speed_menu = $SpeedMenu
 @onready var menu_options = $MenuOptions
+@onready var guide_window = $guideWindow
 
 func _ready():
 	print("Ready!")
@@ -50,3 +51,7 @@ func _on_speed_pressed():
 
 func _on_algo_icon_pressed():
 	menu_options.visible = !menu_options.visible
+
+
+func _on_user_guide_pressed():
+	guide_window.visible = !guide_window.visible

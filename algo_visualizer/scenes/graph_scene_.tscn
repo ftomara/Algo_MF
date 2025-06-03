@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ddttwvkwuyjkp"]
+[gd_scene load_steps=34 format=3 uid="uid://ddttwvkwuyjkp"]
 
 [ext_resource type="Script" path="res://scripts/graph_scene_.gd" id="1_s8akx"]
 [ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_ea86d"]
@@ -22,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://oafthldre56y" path="res://assets/hover.png" id="20_8e7tm"]
 [ext_resource type="Texture2D" uid="uid://q26jegyc6h55" path="res://assets/nodeWindow.png" id="21_fvlfy"]
 [ext_resource type="Texture2D" uid="uid://dm51652xq2n7m" path="res://assets/close button.png" id="22_q7rre"]
+[ext_resource type="Texture2D" uid="uid://71lkvrajceqo" path="res://assets/info window.png" id="23_ud04m"]
+[ext_resource type="Texture2D" uid="uid://ce713p358a338" path="res://assets/user-guide.png" id="24_73sqc"]
+[ext_resource type="Texture2D" uid="uid://dw635df2f3s4y" path="res://assets/guide window.png" id="25_eeoro"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn7nt"]
 content_margin_left = 8.0
@@ -42,6 +45,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2t0k"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5sjh4"]
+texture = ExtResource("23_ud04m")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8er0"]
 bg_color = Color(0.933333, 0.890196, 0.964706, 1)
@@ -116,10 +122,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 222.0
-offset_top = 37.0
-offset_right = 298.0
-offset_bottom = 113.0
+offset_left = 289.0
+offset_top = 33.0
+offset_right = 365.0
+offset_bottom = 109.0
 grow_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_kwil5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fadsu")
@@ -130,20 +136,33 @@ flat = true
 alignment = 2
 
 [node name="info" parent="." instance=ExtResource("6_a5m2g")]
-position = Vector2(1042, 46)
+position = Vector2(1126, -161)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_dpabh")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 332.0
+offset_top = 76.0
+offset_right = 84.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5sjh4")
 
 [node name="speed" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 132.0
-offset_top = 38.0
-offset_right = 205.0
-offset_bottom = 111.0
+offset_left = 193.0
+offset_top = 29.0
+offset_right = 266.0
+offset_bottom = 102.0
 grow_horizontal = 0
 icon = ExtResource("8_x2eme")
 flat = true
@@ -213,6 +232,7 @@ icon = ExtResource("18_m1oil")
 flat = true
 
 [node name="MenuOptions" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -27.0
 offset_top = 128.0
@@ -262,11 +282,18 @@ text = "BFS"
 
 [node name="NodeValueWindow" type="TextureRect" parent="."]
 visible = false
-layout_mode = 0
-offset_left = 811.0
-offset_top = 223.0
-offset_right = 1131.0
-offset_bottom = 384.0
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 73.0
+offset_top = 151.0
+offset_right = 393.0
+offset_bottom = 312.0
+grow_horizontal = 0
+grow_vertical = 2
 texture = ExtResource("21_fvlfy")
 
 [node name="LineEdit" type="LineEdit" parent="NodeValueWindow"]
@@ -288,7 +315,40 @@ offset_bottom = 30.0
 icon = ExtResource("22_q7rre")
 flat = true
 
+[node name="UserGuide" type="Button" parent="."]
+layout_mode = 1
+offset_left = 142.0
+offset_top = 40.0
+offset_right = 406.0
+offset_bottom = 304.0
+scale = Vector2(0.25, 0.25)
+icon = ExtResource("24_73sqc")
+flat = true
+
+[node name="guideWindow" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 140.0
+offset_top = 117.0
+offset_right = 425.0
+offset_bottom = 333.0
+texture = ExtResource("25_eeoro")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="guideWindow"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 21.0
+offset_right = 240.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "- Right click to add a new node
+
+-Click on any two nodes to 
+create an edge"
+
 [connection signal="pressed" from="speed" to="." method="_on_speed_pressed"]
 [connection signal="pressed" from="AlgoIcon" to="." method="_on_algo_icon_pressed"]
 [connection signal="text_submitted" from="NodeValueWindow/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="NodeValueWindow/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UserGuide" to="." method="_on_user_guide_pressed"]

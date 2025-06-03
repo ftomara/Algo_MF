@@ -2,7 +2,7 @@ ea4bc82a6ad023ab7ee23ee620429895
 ::res://::1748977130
 icon.svg::CompressedTexture2D::671115197250279494::1748955841::1748955909::1::::<><>::
 README.md::TextFile::-1::1748955841::0::1::::<><>::
-::res://assets/::1748977139
+::res://assets/::1748987247
 631_750x750_Front_Color-White.jpg::CompressedTexture2D::2517386880457800261::1748955841::1748955909::1::::<><>::
 algorithm (3) 2.png::CompressedTexture2D::89441221414648585::1748957110::1748957111::1::::<><>::
 Animation window (1).png::CompressedTexture2D::4792654550320637153::1748960099::1748960100::1::::<><>::
@@ -15,8 +15,10 @@ down.png::CompressedTexture2D::3441255060654176513::1748955841::1748955909::1:::
 file 2.png::CompressedTexture2D::8808666832857199260::1748957110::1748957111::1::::<><>::
 Frame.png::CompressedTexture2D::1266022601489833679::1748955841::1748955909::1::::<><>::
 GraphNode.png::CompressedTexture2D::1826222389246192302::1748957110::1748957111::1::::<><>::
+guide window.png::CompressedTexture2D::8769166137635109514::1748987247::1748987248::1::::<><>::
 hover.png::CompressedTexture2D::982981710795995262::1748961949::1748961949::1::::<><>::
 icon.svg::CompressedTexture2D::671115197250279494::1748955841::1748955909::1::::<><>::
+info window.png::CompressedTexture2D::2300403692146209438::1748985713::1748985714::1::::<><>::
 info.png::CompressedTexture2D::5194949169564658306::1748955841::1748955909::1::::<><>::
 input_area.png::CompressedTexture2D::4864018001808994943::1748955841::1748955909::1::::<><>::
 insertion.jpg::CompressedTexture2D::2212532152673281092::1748955841::1748955909::1::::<><>::
@@ -33,6 +35,7 @@ selectioncopy.jpg::CompressedTexture2D::963627457079399721::1748955841::17489559
 setting.png::CompressedTexture2D::7482157525777875592::1748955841::1748955909::1::::<><>::
 speedometer 2.png::CompressedTexture2D::2437366600663469050::1748957110::1748957111::1::::<><>::
 ss.jpg::CompressedTexture2D::7998937624034867213::1748955841::1748955909::1::::<><>::
+user-guide.png::CompressedTexture2D::5121286306621480601::1748986524::1748986525::1::::<><>::
 x0.25 (1).png::CompressedTexture2D::70995094345203599::1748958711::1748958711::1::::<><>::
 x0.25.png::CompressedTexture2D::8678317173835179781::1748957110::1748957111::1::::<><>::
 x1.0 (1).png::CompressedTexture2D::150253572503119434::1748961171::1748961172::1::::<><>::
@@ -44,21 +47,21 @@ x2.0.png::CompressedTexture2D::26918399464553284::1748957110::1748957111::1::::<
 ::res://fonts/::1748955909
 Oswald-Regular.ttf::FontFile::6185073234889348656::1748955841::1748955909::1::::<><>::
 Oswald-VariableFont_wght.ttf::FontFile::7029784829675268622::1748955841::1748955909::1::::<><>::
-::res://scenes/::1748977130
-game.tscn::PackedScene::7257936218641707102::1748976917::0::1::::<><>::uid://cuedit6mofbc7::::res://fonts/Oswald-Regular.ttf<>res://scripts/LineEdit.gd<>res://scripts/game.gd<>uid://38b7uiombv1i::::res://assets/panel_ground.png<>uid://dbqlo4xfgpsti::::res://assets/background.png<>uid://c7fjr8u8dk58u::::res://fonts/Oswald-VariableFont_wght.ttf<>uid://cbkfwvyqqktoh::::res://assets/input_area.png<>uid://btlywuhhfxhue::::res://scenes/info.tscn<>uid://c6x7foqce4p3p::::res://assets/refresh 2.png<>uid://je56yuspmr2j::::res://sounds/click.mp3<>uid://cajuk5gipq1td::::res://assets/Animation window (1).png<>uid://dvv3u7aygsb14::::res://assets/x0.25.png<>uid://banjqlgmyrvb::::res://assets/x0.25 (1).png<>uid://bdvbvr143cer3::::res://assets/x1.0.png<>uid://fjhoj2p2u44o::::res://assets/x1.5.png<>uid://nblvqfbidyy::::res://assets/x2.0.png<>uid://ce1wiqav6w6m::::res://assets/x1.0 (1).png<>uid://bayxcpanh6igg::::res://assets/speedometer 2.png<>uid://raegxwdcg7ah::::res://assets/x1.5 (1).png<>uid://b7uwl6bo7f2eq::::res://assets/x2.0 (1).png<>uid://bjlc36uw0fef::::res://assets/algorithm (3) 2.png<>uid://btu75lmaju2sm::::res://assets/menuBG.png<>uid://oafthldre56y::::res://assets/hover.png
-graph_node.tscn::PackedScene::5072363184618300336::1748976918::0::1::::<><>::res://scripts/graph_node.gd<>uid://1avu7a1b768a::::res://assets/GraphNode.png
+::res://scenes/::1748986924
+game.tscn::PackedScene::7257936218641707102::1748986924::0::1::::<><>::uid://cuedit6mofbc7::::res://fonts/Oswald-Regular.ttf<>res://scripts/LineEdit.gd<>res://scripts/game.gd<>uid://38b7uiombv1i::::res://assets/panel_ground.png<>uid://dbqlo4xfgpsti::::res://assets/background.png<>uid://c7fjr8u8dk58u::::res://fonts/Oswald-VariableFont_wght.ttf<>uid://cbkfwvyqqktoh::::res://assets/input_area.png<>uid://btlywuhhfxhue::::res://scenes/info.tscn<>uid://c6x7foqce4p3p::::res://assets/refresh 2.png<>uid://je56yuspmr2j::::res://sounds/click.mp3<>uid://cajuk5gipq1td::::res://assets/Animation window (1).png<>uid://dvv3u7aygsb14::::res://assets/x0.25.png<>uid://banjqlgmyrvb::::res://assets/x0.25 (1).png<>uid://bdvbvr143cer3::::res://assets/x1.0.png<>uid://fjhoj2p2u44o::::res://assets/x1.5.png<>uid://nblvqfbidyy::::res://assets/x2.0.png<>uid://ce1wiqav6w6m::::res://assets/x1.0 (1).png<>uid://bayxcpanh6igg::::res://assets/speedometer 2.png<>uid://raegxwdcg7ah::::res://assets/x1.5 (1).png<>uid://b7uwl6bo7f2eq::::res://assets/x2.0 (1).png<>uid://bjlc36uw0fef::::res://assets/algorithm (3) 2.png<>uid://btu75lmaju2sm::::res://assets/menuBG.png<>uid://oafthldre56y::::res://assets/hover.png
+graph_node.tscn::PackedScene::5072363184618300336::1748986924::0::1::::<><>::res://scripts/graph_node.gd<>uid://1avu7a1b768a::::res://assets/GraphNode.png
 graph_scene.tscn::PackedScene::749892977504522057::1748976840::0::1::::<><>::res://scripts/graph_scene.gd<>uid://38b7uiombv1i::::res://assets/panel_ground.png<>uid://dbqlo4xfgpsti::::res://assets/background.png<>uid://cuedit6mofbc7::::res://fonts/Oswald-Regular.ttf<>uid://c6x7foqce4p3p::::res://assets/refresh 2.png<>uid://btlywuhhfxhue::::res://scenes/info.tscn<>uid://je56yuspmr2j::::res://sounds/click.mp3<>uid://bayxcpanh6igg::::res://assets/speedometer 2.png<>uid://cajuk5gipq1td::::res://assets/Animation window (1).png<>uid://dvv3u7aygsb14::::res://assets/x0.25.png<>uid://banjqlgmyrvb::::res://assets/x0.25 (1).png<>uid://bdvbvr143cer3::::res://assets/x1.0.png<>uid://ce1wiqav6w6m::::res://assets/x1.0 (1).png<>uid://fjhoj2p2u44o::::res://assets/x1.5.png<>uid://raegxwdcg7ah::::res://assets/x1.5 (1).png<>uid://nblvqfbidyy::::res://assets/x2.0.png<>uid://b7uwl6bo7f2eq::::res://assets/x2.0 (1).png<>uid://bjlc36uw0fef::::res://assets/algorithm (3) 2.png<>uid://btu75lmaju2sm::::res://assets/menuBG.png<>uid://cejdc0exop7hk::::res://scenes/graph_node.tscn<>uid://oafthldre56y::::res://assets/hover.png
-graph_scene_.tscn::PackedScene::7410245789114663879::1748976918::0::1::::<><>::res://scripts/graph_scene_.gd<>uid://38b7uiombv1i::::res://assets/panel_ground.png<>uid://dbqlo4xfgpsti::::res://assets/background.png<>uid://cuedit6mofbc7::::res://fonts/Oswald-Regular.ttf<>uid://c6x7foqce4p3p::::res://assets/refresh 2.png<>uid://btlywuhhfxhue::::res://scenes/info.tscn<>uid://je56yuspmr2j::::res://sounds/click.mp3<>uid://bayxcpanh6igg::::res://assets/speedometer 2.png<>uid://cajuk5gipq1td::::res://assets/Animation window (1).png<>uid://dvv3u7aygsb14::::res://assets/x0.25.png<>uid://banjqlgmyrvb::::res://assets/x0.25 (1).png<>uid://bdvbvr143cer3::::res://assets/x1.0.png<>uid://ce1wiqav6w6m::::res://assets/x1.0 (1).png<>uid://fjhoj2p2u44o::::res://assets/x1.5.png<>uid://raegxwdcg7ah::::res://assets/x1.5 (1).png<>uid://nblvqfbidyy::::res://assets/x2.0.png<>uid://b7uwl6bo7f2eq::::res://assets/x2.0 (1).png<>uid://bjlc36uw0fef::::res://assets/algorithm (3) 2.png<>uid://btu75lmaju2sm::::res://assets/menuBG.png<>uid://oafthldre56y::::res://assets/hover.png
-info.tscn::PackedScene::3744214425008952944::1748976918::0::1::::<><>::uid://ny12k1a6ixev::::res://assets/selectioncopy.jpg<>res://scripts/Button.gd<>uid://6r1c08nq5coq::::res://assets/insertion.jpg<>uid://dbutmvx3odar4::::res://assets/dcopy.jpg<>uid://dxq8pq41ksfcu::::res://assets/file 2.png<>uid://je56yuspmr2j::::res://sounds/click.mp3
-input_response.tscn::PackedScene::1306253529917564362::1748976917::0::1::::<><>::res://scripts/input_response.gd<>uid://cuedit6mofbc7::::res://fonts/Oswald-Regular.ttf
-input_response_cols.tscn::PackedScene::8366862986470297365::1748976917::0::1::::<><>::res://scripts/input_response_cols.gd<>uid://bvybhiiew3b56::::res://assets/numbers_frame.svg<>uid://cuedit6mofbc7::::res://fonts/Oswald-Regular.ttf<>uid://bpa776dh5r25r::::res://assets/down.png
+graph_scene_.tscn::PackedScene::7410245789114663879::1748986924::0::1::::<><>::res://scripts/graph_scene_.gd<>uid://38b7uiombv1i::::res://assets/panel_ground.png<>uid://dbqlo4xfgpsti::::res://assets/background.png<>uid://cuedit6mofbc7::::res://fonts/Oswald-Regular.ttf<>uid://c6x7foqce4p3p::::res://assets/refresh 2.png<>uid://btlywuhhfxhue::::res://scenes/info.tscn<>uid://je56yuspmr2j::::res://sounds/click.mp3<>uid://bayxcpanh6igg::::res://assets/speedometer 2.png<>uid://cajuk5gipq1td::::res://assets/Animation window (1).png<>uid://dvv3u7aygsb14::::res://assets/x0.25.png<>uid://banjqlgmyrvb::::res://assets/x0.25 (1).png<>uid://bdvbvr143cer3::::res://assets/x1.0.png<>uid://ce1wiqav6w6m::::res://assets/x1.0 (1).png<>uid://fjhoj2p2u44o::::res://assets/x1.5.png<>uid://raegxwdcg7ah::::res://assets/x1.5 (1).png<>uid://nblvqfbidyy::::res://assets/x2.0.png<>uid://b7uwl6bo7f2eq::::res://assets/x2.0 (1).png<>uid://bjlc36uw0fef::::res://assets/algorithm (3) 2.png<>uid://btu75lmaju2sm::::res://assets/menuBG.png<>uid://oafthldre56y::::res://assets/hover.png<>uid://q26jegyc6h55::::res://assets/nodeWindow.png<>uid://dm51652xq2n7m::::res://assets/close button.png<>uid://71lkvrajceqo::::res://assets/info window.png<>uid://ce713p358a338::::res://assets/user-guide.png
+info.tscn::PackedScene::3744214425008952944::1748986924::0::1::::<><>::uid://ny12k1a6ixev::::res://assets/selectioncopy.jpg<>res://scripts/Button.gd<>uid://6r1c08nq5coq::::res://assets/insertion.jpg<>uid://dbutmvx3odar4::::res://assets/dcopy.jpg<>uid://dxq8pq41ksfcu::::res://assets/file 2.png<>uid://je56yuspmr2j::::res://sounds/click.mp3
+input_response.tscn::PackedScene::1306253529917564362::1748986924::0::1::::<><>::res://scripts/input_response.gd<>uid://cuedit6mofbc7::::res://fonts/Oswald-Regular.ttf
+input_response_cols.tscn::PackedScene::8366862986470297365::1748986924::0::1::::<><>::res://scripts/input_response_cols.gd<>uid://bvybhiiew3b56::::res://assets/numbers_frame.svg<>uid://cuedit6mofbc7::::res://fonts/Oswald-Regular.ttf<>uid://bpa776dh5r25r::::res://assets/down.png
 node.tscn::PackedScene::6871206672681309539::1748955841::0::1::::<><>::
 node_2d.tscn::PackedScene::6697509010267522250::1748955841::0::1::::<><>::res://Node2D.gd
-::res://scripts/::1748976915
+::res://scripts/::1748986163
 Button.gd::GDScript::-1::1748969847::0::1::::<>Button<>::
 game.gd::GDScript::-1::1748963908::0::1::::<>Control<>::
 graph_node.gd::GDScript::-1::1748976278::0::1::::<>Control<>::
-graph_scene_.gd::GDScript::-1::1748976915::0::1::::<>Control<>::
+graph_scene_.gd::GDScript::-1::1748986163::0::1::::<>Control<>::
 input_response.gd::GDScript::-1::1748955841::0::1::::<>VBoxContainer<>::
 input_response_cols.gd::GDScript::-1::1748955841::0::1::::<>HBoxContainer<>::
 LineEdit.gd::GDScript::-1::1748955841::0::1::::<>LineEdit<>::

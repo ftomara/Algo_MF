@@ -1,10 +1,11 @@
-Button
+Label
+RichTextLabel
 TextureRect
+Button
+Panel
 LineEdit
 Sprite2D
 Node2D
 Control
-Label
 TextureButton
 VBoxContainer
-Panel
