@@ -5,9 +5,13 @@ extends Control
 var ANIMATION_DURATION = 0.4
 var ANIMATION_DELAY = 0.01
 @onready var label = $Background/MarginContainer/Rows/GameInfo/MarginContainer/Label
-@onready var settings = $settings
+#@onready var settings = $settings
 @onready var algo_option = $algo_option
 @onready var info = $info
+@onready var speed = $speed
+@onready var speedMenu = $SpeedMenu
+@onready var MenuOptions = $MenuOptions
+
 var whoosh  = preload("res://sounds/whoosh-6316.mp3")
 var sorted = preload("res://sounds/sorted.mp3")
 var swaped = preload("res://sounds/swish.mp3")
@@ -40,17 +44,12 @@ func _ready():
 	label.set("theme_override_font_sizes/font_size",50)	
 	add_child(audio)
 	drop_menu()
-	settings_menu()
+	#settings_menu()
 func drop_menu():
 	algo_option.add_item("  Bubble Sort")
 	algo_option.add_item("  Insertion Sort")
 	algo_option.add_item("  Selection Sort")	
-func settings_menu():
-	settings.add_item(" Animation speed : 0.25")
-	settings.add_item(" Animation speed : 0.5")
-	settings.add_item(" Animation speed : 1.0")
-	settings.add_item(" Animation speed : 1.25")
-	
+
 func insertion_sort():
 	var n = arr.size()
 	sprites[0].get_node("Sprite2D/d").set("theme_override_styles/normal", style_box)	
@@ -73,6 +72,7 @@ func insertion_sort():
 	if audio.playing == false:
 		audio.stream = sorted
 		audio.play()
+		
 func animate_insertion(key):
 	var sprite1 = sprites[key+1].get_node("Sprite2D") 
 	var sprite2 = sprites[key].get_node("Sprite2D") 
@@ -256,7 +256,8 @@ func reset_sprite_colors():
 	label.text=" "
 	info.get_node("Button").reset()
 	for i in range(sprites.size()):
-		sprites[i].get_node("Sprite2D/d").set("theme_override_styles/normal", style_box2)		
+		sprites[i].get_node("Sprite2D/d").set("theme_override_styles/normal", style_box3)		
+
 func _on_option_button_item_selected(index):
 	$AudioStreamPlayer.play()	
 	if index == 0:
@@ -268,6 +269,8 @@ func _on_option_button_item_selected(index):
 	if index ==2:
 		selection_sort()
 		info.get_node("Button").text_rect(2)
+		
+		
 func _on_button_pressed():
 	$AudioStreamPlayer.play()
 	reset_sprite_colors()
@@ -299,6 +302,8 @@ func move(i,j):
 				
 	await tween.finished
 	print("new1 : ",sp1.position," new2: ",sp2.position)
+	
+	
 func quick_sort(arr: Array, low: int, high: int) -> int:
 	if(low == high):
 		sprites[low].get_node("Sprite2D/d").set("theme_override_styles/normal", style_box)	
@@ -312,6 +317,8 @@ func quick_sort(arr: Array, low: int, high: int) -> int:
 		await quick_sort(arr, pi + 1, high)	
 	return 1
 	print(arr)
+	
+	
 func partition(arr: Array, low: int, high: int) -> int:
 	var pivot: int = arr[high]  # pivot
 	var i: int = (low - 1)  
@@ -382,16 +389,41 @@ func start_sorting():
 			audio.stream = sorted
 			audio.play()
 		
-func _on_settings_item_selected(index):
-	if index == 0 :
-		ANIMATION_DURATION = 1.0
-	if index == 1 :
-		ANIMATION_DURATION = 0.7
-	if index == 2 :
-		ANIMATION_DURATION = 0.4
-	if index == 3 :
-		ANIMATION_DURATION = 0.2
-
 
 func _on_algo_option_pressed():
 	$AudioStreamPlayer.play()
+
+
+func _on_speed_pressed():
+	speedMenu.visible = !speedMenu.visible
+	
+func _on_x_25_pressed():
+	ANIMATION_DURATION = 0.25
+	print ("0.25")
+
+func _on_x_1_pressed():
+	ANIMATION_DURATION = 1.0
+
+func _on_x_1_5_pressed():
+	ANIMATION_DURATION = 1.5
+
+func _on_x_2_pressed():
+	ANIMATION_DURATION = 2.0
+	
+func _on_algo_icon_pressed():
+	MenuOptions.visible = !MenuOptions.visible
+
+func _on_selection_sort_pressed():
+	selection_sort()
+
+
+func _on_bubble_sort_pressed():
+	bubble_sort()
+
+
+func _on_insertion_sort_pressed():
+	insertion_sort()
+
+
+func _on_quick_sort_pressed():
+	start_sorting()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://su02mlseynpy"]
 
 [ext_resource type="Script" path="res://scripts/input_response.gd" id="1_8vv8h"]
-[ext_resource type="FontFile" uid="uid://dblhhw6ptaby7" path="res://fonts/Oswald-Regular.ttf" id="1_puvep"]
+[ext_resource type="FontFile" uid="uid://cuedit6mofbc7" path="res://fonts/Oswald-Regular.ttf" id="1_puvep"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnsba"]
 content_margin_left = 8.0

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/Button.gd" id="2_11wnr"]
 [ext_resource type="Texture2D" uid="uid://6r1c08nq5coq" path="res://assets/insertion.jpg" id="2_r8k54"]
 [ext_resource type="Texture2D" uid="uid://dbutmvx3odar4" path="res://assets/dcopy.jpg" id="3_dnsm4"]
-[ext_resource type="Texture2D" uid="uid://cgaqb3h1rp1ic" path="res://assets/info.png" id="4_ay2gf"]
+[ext_resource type="Texture2D" uid="uid://dxq8pq41ksfcu" path="res://assets/file 2.png" id="4_2cnfe"]
 [ext_resource type="AudioStream" uid="uid://je56yuspmr2j" path="res://sounds/click.mp3" id="6_t7ybg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m6pt7"]
@@ -45,13 +45,11 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_dnsm4")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 14.0
-offset_top = 5.0
-offset_right = 534.0
-offset_bottom = 525.0
-scale = Vector2(0.07, 0.07)
+texture_filter = 1
+offset_right = 56.0
+offset_bottom = 64.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_gr17f")
-icon = ExtResource("4_ay2gf")
+icon = ExtResource("4_2cnfe")
 flat = true
 script = ExtResource("2_11wnr")
 
