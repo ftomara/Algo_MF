@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2om8nk6ysnpd"]
+
+[ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="1_mbp2a"]
+[ext_resource type="Script" path="res://testing.gd" id="1_t0uxs"]
+[ext_resource type="Texture2D" uid="uid://dbqlo4xfgpsti" path="res://assets/background.png" id="2_afqwp"]
+[ext_resource type="FontFile" uid="uid://cuedit6mofbc7" path="res://fonts/Oswald-Regular.ttf" id="3_x1r5m"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xlt8k"]
+content_margin_left = 8.0
+texture = ExtResource("1_mbp2a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ws2qc"]
+texture = ExtResource("2_afqwp")
+region_rect = Rect2(3, 0.588997, 1383, 668)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_t0uxs")
+
+[node name="Background" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -11.0
+offset_right = 1155.0
+offset_bottom = 665.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xlt8k")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 2
+
+[node name="Rows" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="GameInfo" type="PanelContainer" parent="Background/MarginContainer/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_ws2qc")
+
+[node name="CenterContainer" type="MarginContainer" parent="Background/MarginContainer/Rows/GameInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 200
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/Rows/GameInfo/CenterContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 110
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer/Rows/GameInfo"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="Background/MarginContainer/Rows/GameInfo/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.619608, 0.47451, 0.92549, 1)
+theme_override_fonts/font = ExtResource("3_x1r5m")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1

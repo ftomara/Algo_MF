@@ -7,13 +7,6 @@ func _ready():
 	popup_panel.grab_focus() 
 	
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_pressed():
 	$"../AudioStreamPlayer".play()
 	popup_panel.popup_centered()

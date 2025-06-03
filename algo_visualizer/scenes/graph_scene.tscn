@@ -1,0 +1,260 @@
+[gd_scene load_steps=28 format=3 uid="uid://kxivlyhmlm6d"]
+
+[ext_resource type="Script" path="res://scripts/graph_scene.gd" id="1_8tu1y"]
+[ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_hmrs4"]
+[ext_resource type="Texture2D" uid="uid://dbqlo4xfgpsti" path="res://assets/background.png" id="3_k7flf"]
+[ext_resource type="FontFile" uid="uid://cuedit6mofbc7" path="res://fonts/Oswald-Regular.ttf" id="4_pmn4m"]
+[ext_resource type="Texture2D" uid="uid://c6x7foqce4p3p" path="res://assets/refresh 2.png" id="6_a56dc"]
+[ext_resource type="PackedScene" uid="uid://btlywuhhfxhue" path="res://scenes/info.tscn" id="7_1cbo4"]
+[ext_resource type="AudioStream" uid="uid://je56yuspmr2j" path="res://sounds/click.mp3" id="8_i2q0r"]
+[ext_resource type="Texture2D" uid="uid://bayxcpanh6igg" path="res://assets/speedometer 2.png" id="9_otmr0"]
+[ext_resource type="Texture2D" uid="uid://cajuk5gipq1td" path="res://assets/Animation window (1).png" id="10_6ov6f"]
+[ext_resource type="Texture2D" uid="uid://dvv3u7aygsb14" path="res://assets/x0.25.png" id="11_n6aqr"]
+[ext_resource type="Texture2D" uid="uid://banjqlgmyrvb" path="res://assets/x0.25 (1).png" id="12_5eoc5"]
+[ext_resource type="Texture2D" uid="uid://bdvbvr143cer3" path="res://assets/x1.0.png" id="13_yba5h"]
+[ext_resource type="Texture2D" uid="uid://ce1wiqav6w6m" path="res://assets/x1.0 (1).png" id="14_jf5lo"]
+[ext_resource type="Texture2D" uid="uid://fjhoj2p2u44o" path="res://assets/x1.5.png" id="15_41m26"]
+[ext_resource type="Texture2D" uid="uid://raegxwdcg7ah" path="res://assets/x1.5 (1).png" id="16_igutw"]
+[ext_resource type="Texture2D" uid="uid://nblvqfbidyy" path="res://assets/x2.0.png" id="17_w0gh0"]
+[ext_resource type="Texture2D" uid="uid://b7uwl6bo7f2eq" path="res://assets/x2.0 (1).png" id="18_4dkbg"]
+[ext_resource type="Texture2D" uid="uid://bjlc36uw0fef" path="res://assets/algorithm (3) 2.png" id="19_3b7gm"]
+[ext_resource type="Texture2D" uid="uid://btu75lmaju2sm" path="res://assets/menuBG.png" id="20_ok0cc"]
+[ext_resource type="PackedScene" uid="uid://cejdc0exop7hk" path="res://scenes/graph_node.tscn" id="21_fd6t3"]
+[ext_resource type="Texture2D" uid="uid://oafthldre56y" path="res://assets/hover.png" id="21_sachf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_umn3i"]
+content_margin_left = 8.0
+texture = ExtResource("2_hmrs4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cy2pt"]
+texture = ExtResource("3_k7flf")
+region_rect = Rect2(3, 0.588997, 1383, 668)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iidld"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ei5m"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtlcd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6a63"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="GraphScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8tu1y")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_umn3i")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 2
+
+[node name="Rows" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="GameInfo" type="PanelContainer" parent="Background/MarginContainer/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_cy2pt")
+
+[node name="CenterContainer" type="MarginContainer" parent="Background/MarginContainer/Rows/GameInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 200
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/Rows/GameInfo/CenterContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 110
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer/Rows/GameInfo"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="Background/MarginContainer/Rows/GameInfo/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.619608, 0.47451, 0.92549, 1)
+theme_override_fonts/font = ExtResource("4_pmn4m")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="reset" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 28.0
+offset_right = -94.0
+offset_bottom = 104.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_iidld")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ei5m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xtlcd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_q6a63")
+icon = ExtResource("6_a56dc")
+flat = true
+alignment = 2
+
+[node name="info" parent="." instance=ExtResource("7_1cbo4")]
+position = Vector2(1048, 29)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_i2q0r")
+
+[node name="speed" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -257.0
+offset_top = 29.0
+offset_right = -184.0
+offset_bottom = 102.0
+grow_horizontal = 0
+icon = ExtResource("9_otmr0")
+flat = true
+
+[node name="SpeedMenu" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -609.0
+offset_top = 110.0
+offset_right = -238.0
+offset_bottom = 307.0
+grow_horizontal = 0
+texture = ExtResource("10_6ov6f")
+expand_mode = 1
+
+[node name="x25" type="TextureButton" parent="SpeedMenu"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 82.0
+offset_right = 81.0
+offset_bottom = 127.0
+texture_normal = ExtResource("11_n6aqr")
+texture_hover = ExtResource("12_5eoc5")
+stretch_mode = 0
+
+[node name="x1" type="TextureButton" parent="SpeedMenu"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 81.0
+offset_right = 158.0
+offset_bottom = 126.0
+texture_normal = ExtResource("13_yba5h")
+texture_hover = ExtResource("14_jf5lo")
+stretch_mode = 0
+
+[node name="x1_5" type="TextureButton" parent="SpeedMenu"]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 80.0
+offset_right = 232.0
+offset_bottom = 125.0
+texture_normal = ExtResource("15_41m26")
+texture_hover = ExtResource("16_igutw")
+stretch_mode = 0
+
+[node name="x2" type="TextureButton" parent="SpeedMenu"]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 79.0
+offset_right = 310.0
+offset_bottom = 124.0
+texture_normal = ExtResource("17_w0gh0")
+texture_hover = ExtResource("18_4dkbg")
+stretch_mode = 0
+
+[node name="AlgoIcon" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 24.0
+offset_right = 138.0
+offset_bottom = 100.0
+icon = ExtResource("19_3b7gm")
+flat = true
+
+[node name="MenuOptions" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -24.0
+offset_top = 152.0
+offset_right = 342.0
+offset_bottom = 448.0
+texture = ExtResource("20_ok0cc")
+expand_mode = 1
+
+[node name="SelectionSort" type="TextureButton" parent="MenuOptions"]
+layout_mode = 2
+offset_left = 103.0
+offset_top = 20.0
+offset_right = 226.0
+offset_bottom = 60.0
+scale = Vector2(1.3, 1.2)
+texture_hover = ExtResource("21_sachf")
+ignore_texture_size = true
+
+[node name="Label" type="Label" parent="MenuOptions/SelectionSort"]
+layout_mode = 0
+offset_left = 11.5385
+offset_top = 5.0
+offset_right = 124.539
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "BFS"
+
+[node name="QuickSort" type="TextureButton" parent="MenuOptions"]
+layout_mode = 2
+offset_left = 103.0
+offset_top = 72.0
+offset_right = 226.0
+offset_bottom = 112.0
+scale = Vector2(1.3, 1.2)
+texture_hover = ExtResource("21_sachf")
+ignore_texture_size = true
+
+[node name="Label" type="Label" parent="MenuOptions/QuickSort"]
+layout_mode = 0
+offset_left = 12.3077
+offset_top = 5.83334
+offset_right = 125.308
+offset_bottom = 29.8333
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "DFS"
+
+[node name="graphNode" parent="." instance=ExtResource("21_fd6t3")]
+layout_mode = 1
+offset_left = 282.0
+offset_top = 194.0
+offset_right = -788.0
+offset_bottom = -371.0
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

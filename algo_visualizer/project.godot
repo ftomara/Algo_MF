@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Algo_Visualizer"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/graph_scene_.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

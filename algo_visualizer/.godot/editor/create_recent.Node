@@ -1,7 +1,10 @@
-Label
+Button
 TextureRect
+LineEdit
+Sprite2D
+Node2D
+Control
+Label
 TextureButton
 VBoxContainer
 Panel
-Control
-Button
