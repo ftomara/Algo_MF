@@ -3,6 +3,10 @@ extends Control
 
 signal node_clicked(node)
 
-func _input_event(viewport, event, shape_idx):
+	
+func _gui_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		emit_signal("node_clicked", self)
+		#print("node clicked")
+
+

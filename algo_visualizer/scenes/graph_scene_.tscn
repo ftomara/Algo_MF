@@ -325,6 +325,8 @@ scale = Vector2(0.25, 0.25)
 icon = ExtResource("24_73sqc")
 flat = true
 
+[node name="LinesLayer" type="Node2D" parent="."]
+
 [node name="guideWindow" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
