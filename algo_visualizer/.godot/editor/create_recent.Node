@@ -1,8 +1,9 @@
-Node2D
-Label
-RichTextLabel
-TextureRect
 Button
+HBoxContainer
+Label
+TextureRect
+Node2D
+RichTextLabel
 Panel
 LineEdit
 Sprite2D

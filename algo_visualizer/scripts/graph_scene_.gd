@@ -16,6 +16,7 @@ var connections = {}
 @onready var menu_options = $MenuOptions
 @onready var guide_window = $guideWindow
 @onready var line_layer = $LinesLayer
+@onready var delet_node_dialog = $DeleteNodeDialog
 
 func _ready():
 	print("Ready!")
@@ -56,14 +57,30 @@ func _on_node_clicked(node):
 			node_a = node
 		elif node_b == null:
 			node_b = node			
-	if click_number == 2 && node_a && node_b:
+	if click_number == 2 && node_a && node_b && node_a!=node_b:
 		_draw_line(node_a,node_b)
 		click_number = 0
 		node_a = null
 		node_b = null
+	elif click_number == 2 && node_a && node_b && node_a==node_b:
+		delet_node_dialog.show()
+		delet_node_dialog.grab_focus()
 	
 	
 		
+func _delete_node(nodea):
+	nodes.erase(nodea)
+	connections.erase(nodea)
+	for n in connections.keys():
+		if node_a in connections[n]:
+			connections[n].erase(nodea)
+	var node_position = nodea.position+Vector2(37,37)
+	for line in lines:
+		for point in line.points:
+			if point == node_position:
+				lines.erase(line)
+				line_layer.remove_child(line)
+	remove_child(nodea)
 
 func _draw_line(nodea,nodeb):
 	var line = Line2D.new()
@@ -79,6 +96,7 @@ func _draw_line(nodea,nodeb):
 		
 	line.add_point(nodea.position+Vector2(37,37))
 	line.add_point(nodeb.position+Vector2(37,37))
+	lines.append(line)
 	line_layer.add_child(line)
 	
 	print(connections)
@@ -101,3 +119,17 @@ func _on_algo_icon_pressed():
 
 func _on_user_guide_pressed():
 	guide_window.visible = !guide_window.visible
+
+
+func _on_delete_pressed():
+	_delete_node(node_a)
+	click_number = 0
+	node_a = null
+	node_b = null
+	delet_node_dialog.hide()
+
+
+func _on_cancel_pressed():
+	print("cancel pressed")
+	delet_node_dialog.hide()
+	#delet_node_dialog.visible=false

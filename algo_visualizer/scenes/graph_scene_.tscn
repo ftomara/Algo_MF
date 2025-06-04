@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ddttwvkwuyjkp"]
+[gd_scene load_steps=38 format=3 uid="uid://ddttwvkwuyjkp"]
 
 [ext_resource type="Script" path="res://scripts/graph_scene_.gd" id="1_s8akx"]
 [ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_ea86d"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://71lkvrajceqo" path="res://assets/info window.png" id="23_ud04m"]
 [ext_resource type="Texture2D" uid="uid://ce713p358a338" path="res://assets/user-guide.png" id="24_73sqc"]
 [ext_resource type="Texture2D" uid="uid://dw635df2f3s4y" path="res://assets/guide window.png" id="25_eeoro"]
+[ext_resource type="StyleBox" uid="uid://bxbpdekcnuyph" path="res://button_style.tres" id="26_tqbl1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn7nt"]
 content_margin_left = 8.0
@@ -55,6 +56,57 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p75dv"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.337255, 0.305882, 0.298039, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 2.0
+expand_margin_right = 12.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0mxv"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 2.0
+expand_margin_right = 12.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0.54902, 0.54902, 0.54902, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(2.08165e-12, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70udx"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.337255, 0.337255, 0.337255, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 2.0
+expand_margin_right = 12.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0.54902, 0.54902, 0.54902, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(2.08165e-12, 2)
 
 [node name="GraphScene_" type="Control"]
 layout_mode = 3
@@ -349,8 +401,53 @@ text = "- Right click to add a new node
 -Click on any two nodes to 
 create an edge"
 
+[node name="DeleteNodeDialog" type="TextureRect" parent="."]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 381.0
+offset_top = 155.0
+offset_right = 788.0
+offset_bottom = 438.0
+texture = ExtResource("25_eeoro")
+
+[node name="Label" type="Label" parent="DeleteNodeDialog"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 34.0
+offset_right = 347.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Are You Sure You want to Delete
+This Node ?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeleteNodeDialog"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 162.0
+offset_right = 310.0
+offset_bottom = 202.0
+theme_override_constants/separation = 120
+
+[node name="Delete" type="Button" parent="DeleteNodeDialog/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("26_tqbl1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p75dv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p75dv")
+text = "Delete"
+
+[node name="Cancel" type="Button" parent="DeleteNodeDialog/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_h0mxv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_70udx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_70udx")
+text = "Cancel"
+
 [connection signal="pressed" from="speed" to="." method="_on_speed_pressed"]
 [connection signal="pressed" from="AlgoIcon" to="." method="_on_algo_icon_pressed"]
 [connection signal="text_submitted" from="NodeValueWindow/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="NodeValueWindow/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UserGuide" to="." method="_on_user_guide_pressed"]
+[connection signal="pressed" from="DeleteNodeDialog/HBoxContainer/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="DeleteNodeDialog/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
