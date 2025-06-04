@@ -4,7 +4,7 @@
 ![image](https://github.com/user-attachments/assets/efdfaf7e-c443-4216-a895-c31bf5d938ea)
 
 
-- [ ] Add node deletion feature
+- [x] Add node deletion feature
 - [x] Connect nodes with edges
 - [ ] Add undo/redo functionality
 - [ ] Handle Graph Menu selection logic
