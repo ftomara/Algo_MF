@@ -5,7 +5,7 @@
 
 
 - [ ] Add node deletion feature
-- [ ] Connect nodes with edges
+- [x] Connect nodes with edges
 - [ ] Add undo/redo functionality
 - [ ] Handle Graph Menu selection logic
 - [ ] Handle Animation speed (graph Scene)
