@@ -1,12 +1,13 @@
-Button
+ScrollContainer
 HBoxContainer
 Label
-TextureRect
+VBoxContainer
+Control
 Node2D
+Button
+TextureRect
 RichTextLabel
 Panel
 LineEdit
 Sprite2D
-Control
 TextureButton
-VBoxContainer

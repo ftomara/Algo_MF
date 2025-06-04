@@ -1,6 +1,12 @@
 extends Control
 
+const VERTICAL_SPACING := 60
+const HORIZONTAL_SPACING := 60
+
+
 var GraphNodeScene = preload("res://scenes/graph_node.tscn")
+var square = preload("res://scenes/square.tscn")
+
 var first_selected = null
 var current_edit_node: Control = null
 var click_number = 0
@@ -9,18 +15,21 @@ var node_a : Control = null
 var node_b : Control = null
 var lines = []
 var connections = {}
-
+@onready var queue_container = $StackPanel2/VBoxContainer
+@onready var stack_container = $StackPanel/ScrollContainer/VBoxContainer
 @onready var node_value_window = $NodeValueWindow
 @onready var line_edit = $NodeValueWindow/LineEdit
 @onready var speed_menu = $SpeedMenu
 @onready var menu_options = $MenuOptions
 @onready var guide_window = $guideWindow
 @onready var line_layer = $LinesLayer
-@onready var delet_node_dialog = $DeleteNodeDialog
+#@onready var delete_node_dialog = $DeleteNodeDialog
+#stack_container.custom_constants.separation = 20
 
 func _ready():
 	print("Ready!")
 	node_value_window.visible = false
+	
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
@@ -34,15 +43,37 @@ func spawn_graph_node(node_position: Vector2):
 	node.position = node_position
 	node.connect("node_clicked",Callable(self, "_on_node_clicked"))
 	add_child(node)
-
-
 	# Open value window
 	current_edit_node = node
 	node_value_window.visible = true
 	line_edit.clear()
 	line_edit.grab_focus()
 
+func create_queue():
+	$StackPanel2/Label.visible =true
+	for i in range(nodes.size()):
+		var text = nodes[i].get_node("Gnode/Label").text
+		spawn_square_in_queue(text)
 
+func spawn_square_in_queue(text: String):
+	var square_instance = square.instantiate()
+	square_instance.get_node("Gnode/Label").text = text
+	queue_container.add_child(square_instance)
+	
+
+func create_stack():
+	$StackPanel/Label.visible = true
+	for i in range(nodes.size()):
+		var reversed_index = nodes.size() - 1 - i
+		var text = nodes[reversed_index].get_node("Gnode/Label").text
+		spawn_stack_item(text)
+
+
+func spawn_stack_item(text: String):
+	var square_instance = square.instantiate()
+	square_instance.get_node("Gnode/Label").text = text
+	stack_container.add_child(square_instance)
+	
 func _on_line_edit_text_submitted(new_text):
 	if current_edit_node:
 		current_edit_node.get_node("Gnode/Label").text = new_text
@@ -62,9 +93,9 @@ func _on_node_clicked(node):
 		click_number = 0
 		node_a = null
 		node_b = null
-	elif click_number == 2 && node_a && node_b && node_a==node_b:
-		delet_node_dialog.show()
-		delet_node_dialog.grab_focus()
+	#elif click_number == 2 && node_a && node_b && node_a==node_b:
+	#	delet_node_dialog.show()
+	#	delet_node_dialog.grab_focus()
 	
 	
 		
@@ -126,10 +157,15 @@ func _on_delete_pressed():
 	click_number = 0
 	node_a = null
 	node_b = null
-	delet_node_dialog.hide()
+#	delet_node_dialog.hide()
 
 
 func _on_cancel_pressed():
 	print("cancel pressed")
-	delet_node_dialog.hide()
+#	delet_node_dialog.hide()
 	#delet_node_dialog.visible=false
+
+
+func _on_dfs_pressed():
+	create_stack()
+	create_queue()

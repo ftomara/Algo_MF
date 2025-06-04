@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ddttwvkwuyjkp"]
+[gd_scene load_steps=36 format=3 uid="uid://ddttwvkwuyjkp"]
 
 [ext_resource type="Script" path="res://scripts/graph_scene_.gd" id="1_s8akx"]
 [ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_ea86d"]
@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://71lkvrajceqo" path="res://assets/info window.png" id="23_ud04m"]
 [ext_resource type="Texture2D" uid="uid://ce713p358a338" path="res://assets/user-guide.png" id="24_73sqc"]
 [ext_resource type="Texture2D" uid="uid://dw635df2f3s4y" path="res://assets/guide window.png" id="25_eeoro"]
-[ext_resource type="StyleBox" uid="uid://bxbpdekcnuyph" path="res://button_style.tres" id="26_tqbl1"]
+[ext_resource type="PackedScene" uid="uid://cqptlmq2mt4fk" path="res://scenes/square.tscn" id="26_18n2j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn7nt"]
 content_margin_left = 8.0
@@ -57,56 +57,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p75dv"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0.337255, 0.305882, 0.298039, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-expand_margin_left = 12.0
-expand_margin_top = 2.0
-expand_margin_right = 12.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0mxv"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-expand_margin_left = 12.0
-expand_margin_top = 2.0
-expand_margin_right = 12.0
-expand_margin_bottom = 2.0
-shadow_color = Color(0.54902, 0.54902, 0.54902, 0.6)
-shadow_size = 1
-shadow_offset = Vector2(2.08165e-12, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70udx"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0.337255, 0.337255, 0.337255, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-expand_margin_left = 12.0
-expand_margin_top = 2.0
-expand_margin_right = 12.0
-expand_margin_bottom = 2.0
-shadow_color = Color(0.54902, 0.54902, 0.54902, 0.6)
-shadow_size = 1
-shadow_offset = Vector2(2.08165e-12, 2)
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_x5k7h"]
 
 [node name="GraphScene_" type="Control"]
 layout_mode = 3
@@ -292,7 +243,7 @@ offset_right = 339.0
 offset_bottom = 456.0
 texture = ExtResource("19_pcl7v")
 
-[node name="SelectionSort" type="TextureButton" parent="MenuOptions"]
+[node name="DFS" type="TextureButton" parent="MenuOptions"]
 layout_mode = 2
 offset_left = 102.0
 offset_top = 13.0
@@ -302,7 +253,7 @@ scale = Vector2(1.3, 1.2)
 texture_hover = ExtResource("20_8e7tm")
 ignore_texture_size = true
 
-[node name="Label" type="Label" parent="MenuOptions/SelectionSort"]
+[node name="Label" type="Label" parent="MenuOptions/DFS"]
 layout_mode = 0
 offset_left = 10.7692
 offset_top = 4.16667
@@ -312,7 +263,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 text = "DFS"
 
-[node name="QuickSort" type="TextureButton" parent="MenuOptions"]
+[node name="BFS" type="TextureButton" parent="MenuOptions"]
 layout_mode = 2
 offset_left = 102.0
 offset_top = 59.0
@@ -322,7 +273,7 @@ scale = Vector2(1.3, 1.2)
 texture_hover = ExtResource("20_8e7tm")
 ignore_texture_size = true
 
-[node name="Label" type="Label" parent="MenuOptions/QuickSort"]
+[node name="Label" type="Label" parent="MenuOptions/BFS"]
 layout_mode = 0
 offset_left = 10.7692
 offset_top = 4.16667
@@ -377,8 +328,6 @@ scale = Vector2(0.25, 0.25)
 icon = ExtResource("24_73sqc")
 flat = true
 
-[node name="LinesLayer" type="Node2D" parent="."]
-
 [node name="guideWindow" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
@@ -401,53 +350,94 @@ text = "- Right click to add a new node
 -Click on any two nodes to 
 create an edge"
 
-[node name="DeleteNodeDialog" type="TextureRect" parent="."]
+[node name="LinesLayer" type="Node2D" parent="."]
+
+[node name="square" parent="." instance=ExtResource("26_18n2j")]
 visible = false
-z_index = 1
-layout_mode = 0
-offset_left = 381.0
-offset_top = 155.0
-offset_right = 788.0
-offset_bottom = 438.0
-texture = ExtResource("25_eeoro")
+layout_mode = 1
 
-[node name="Label" type="Label" parent="DeleteNodeDialog"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 34.0
-offset_right = 347.0
-offset_bottom = 93.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Are You Sure You want to Delete
-This Node ?"
+[node name="StackPanel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 79.0
+offset_top = -126.0
+offset_right = 385.0
+offset_bottom = 365.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DeleteNodeDialog"]
-layout_mode = 0
-offset_left = 74.0
-offset_top = 162.0
-offset_right = 310.0
-offset_bottom = 202.0
-theme_override_constants/separation = 120
+[node name="ScrollContainer" type="ScrollContainer" parent="StackPanel"]
+layout_mode = 1
+offset_right = 204.0
+offset_bottom = 386.0
 
-[node name="Delete" type="Button" parent="DeleteNodeDialog/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StackPanel/ScrollContainer"]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("26_tqbl1")
-theme_override_styles/hover = SubResource("StyleBoxFlat_p75dv")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_p75dv")
-text = "Delete"
+size_flags_vertical = 3
+theme_override_constants/separation = 60
 
-[node name="Cancel" type="Button" parent="DeleteNodeDialog/HBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_h0mxv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_70udx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_70udx")
-text = "Cancel"
+[node name="Label" type="Label" parent="StackPanel"]
+visible = false
+layout_mode = 0
+offset_left = 23.0
+offset_top = 413.0
+offset_right = 95.0
+offset_bottom = 453.0
+theme_override_colors/font_shadow_color = Color(0.623529, 0.192157, 0.501961, 1)
+theme_override_colors/font_outline_color = Color(0.647059, 0.105882, 0.901961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxLine_x5k7h")
+text = "Stack"
+
+[node name="StackPanel2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = -124.0
+offset_right = 402.0
+offset_bottom = 367.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="StackPanel2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -109.0
+offset_right = -30.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="StackPanel2"]
+visible = false
+layout_mode = 0
+offset_left = 67.0
+offset_top = 335.0
+offset_right = 158.0
+offset_bottom = 375.0
+theme_override_colors/font_shadow_color = Color(0.623529, 0.192157, 0.501961, 1)
+theme_override_colors/font_outline_color = Color(0.647059, 0.105882, 0.901961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxLine_x5k7h")
+text = "Visited"
 
 [connection signal="pressed" from="speed" to="." method="_on_speed_pressed"]
 [connection signal="pressed" from="AlgoIcon" to="." method="_on_algo_icon_pressed"]
+[connection signal="pressed" from="MenuOptions/DFS" to="." method="_on_dfs_pressed"]
 [connection signal="text_submitted" from="NodeValueWindow/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="NodeValueWindow/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UserGuide" to="." method="_on_user_guide_pressed"]
-[connection signal="pressed" from="DeleteNodeDialog/HBoxContainer/Delete" to="." method="_on_delete_pressed"]
-[connection signal="pressed" from="DeleteNodeDialog/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
