@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ddttwvkwuyjkp"]
+[gd_scene load_steps=35 format=3 uid="uid://ddttwvkwuyjkp"]
 
 [ext_resource type="Script" path="res://scripts/graph_scene_.gd" id="1_s8akx"]
 [ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_ea86d"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://nblvqfbidyy" path="res://assets/x2.0.png" id="16_lj0ks"]
 [ext_resource type="Texture2D" uid="uid://b7uwl6bo7f2eq" path="res://assets/x2.0 (1).png" id="17_1pf58"]
 [ext_resource type="Texture2D" uid="uid://bjlc36uw0fef" path="res://assets/algorithm (3) 2.png" id="18_m1oil"]
-[ext_resource type="Texture2D" uid="uid://btu75lmaju2sm" path="res://assets/menuBG.png" id="19_pcl7v"]
 [ext_resource type="Texture2D" uid="uid://oafthldre56y" path="res://assets/hover.png" id="20_8e7tm"]
 [ext_resource type="Texture2D" uid="uid://q26jegyc6h55" path="res://assets/nodeWindow.png" id="21_fvlfy"]
 [ext_resource type="Texture2D" uid="uid://dm51652xq2n7m" path="res://assets/close button.png" id="22_q7rre"]
@@ -234,14 +233,12 @@ offset_bottom = 117.0
 icon = ExtResource("18_m1oil")
 flat = true
 
-[node name="MenuOptions" type="TextureRect" parent="."]
-visible = false
+[node name="MenuOptions" type="MenuBar" parent="."]
 layout_mode = 0
 offset_left = -27.0
 offset_top = 128.0
 offset_right = 339.0
 offset_bottom = 456.0
-texture = ExtResource("19_pcl7v")
 
 [node name="DFS" type="TextureButton" parent="MenuOptions"]
 layout_mode = 2
@@ -474,7 +471,6 @@ theme_override_constants/separation = 60
 
 [node name="DeleteNodeDialog" type="ConfirmationDialog" parent="."]
 size = Vector2i(360, 100)
-visible = true
 ok_button_text = "Delete"
 dialog_text = "Are You Sure You Want To delete This node ?"
 

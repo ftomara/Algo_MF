@@ -1,3 +1,4 @@
+MenuBar
 ConfirmationDialog
 Button
 HBoxContainer
@@ -12,4 +13,3 @@ RichTextLabel
 Panel
 LineEdit
 Sprite2D
-TextureButton

@@ -104,8 +104,8 @@ func spawn_stack_item(text: String):
 func _on_line_edit_text_submitted(new_text):
 	if current_edit_node and new_text != "":
 		current_edit_node.get_node("Gnode/Label").text = new_text
-		if not nodes.has(current_edit_node):  # Prevent duplicates
-			nodes.push_back(current_edit_node)
+		#if not nodes.has(current_edit_node):  # Prevent duplicates
+			#nodes.push_back(current_edit_node)
 		print("Node label set to:", new_text)
 	_hide_value_window()
 
@@ -131,7 +131,7 @@ func _on_node_clicked(node):
 			_reset_selection()
 		else:
 			# Same node clicked twice - show delete dialog
-			delete_node_dialog.show()
+			delete_node_dialog.popup_centered()
 			# Don't reset here, wait for dialog response
 	
 	# Use timer to prevent rapid clicking
@@ -187,7 +187,7 @@ func _draw_line(nodea, nodeb):
 		return
 	
 	var line = Line2D.new()
-	line.width = 2.0  # Make lines more visible
+	line.width = 5.0  # Make lines more visible
 	line.default_color = Color.WHITE
 	
 	# Add bidirectional connection
@@ -234,17 +234,13 @@ func _on_user_guide_pressed():
 	speed_menu.visible = false
 	menu_options.visible = false
 	guide_window.visible = !guide_window.visible
-	
-
-
-	
 
 func _on_dfs_pressed():
 	print("DFS pressed")
 	# Close menu first
 	menu_options.visible = false
 	# Add small delay to prevent interference
-	await get_tree().process_frame
+	#await get_tree().process_frame
 	create_stack()
 
 func _on_bfs_pressed():
@@ -252,7 +248,7 @@ func _on_bfs_pressed():
 	# Close menu first
 	menu_options.visible = false
 	# Add small delay to prevent interference
-	await get_tree().process_frame
+	#await get_tree().process_frame
 	create_queue()
 
 
