@@ -1,8 +1,9 @@
+VBoxContainer
 ScrollContainer
+Control
+VScrollBar
 HBoxContainer
 Label
-VBoxContainer
-Control
 Node2D
 Button
 TextureRect

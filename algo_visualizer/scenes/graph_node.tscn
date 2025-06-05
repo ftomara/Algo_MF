@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cejdc0exop7hk"]
 
 [ext_resource type="Script" path="res://scripts/graph_node.gd" id="1_58q5e"]
-[ext_resource type="Texture2D" uid="uid://1avu7a1b768a" path="res://assets/GraphNode.png" id="2_cd778"]
+[ext_resource type="Texture2D" uid="uid://r0a7hkfm50g4" path="res://assets/GraphNode (1).png" id="2_x01bc"]
 
 [node name="graphNode" type="Control"]
 layout_mode = 3
@@ -17,7 +17,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_cd778")
+texture = ExtResource("2_x01bc")
 
 [node name="Label" type="Label" parent="Gnode"]
 layout_mode = 1

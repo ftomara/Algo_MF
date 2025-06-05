@@ -6,3 +6,4 @@ res://scenes/graph_node.tscn
 res://scenes/graph_scene_.tscn
 res://scenes/square.tscn
 res://scripts/graph_scene_.gd
+res://guide_window.tscn

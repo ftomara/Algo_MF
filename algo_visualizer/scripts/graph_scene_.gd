@@ -16,7 +16,7 @@ var node_b : Control = null
 var lines = []
 var connections = {}
 @onready var queue_container = $StackPanel2/VBoxContainer
-@onready var stack_container = $StackPanel/ScrollContainer/VBoxContainer
+@onready var stack_container = $testing/ScrollContainer/VBoxContainer
 @onready var node_value_window = $NodeValueWindow
 @onready var line_edit = $NodeValueWindow/LineEdit
 @onready var speed_menu = $SpeedMenu
@@ -36,8 +36,7 @@ func _input(event):
 		print("Clicked at:", event.position)
 		spawn_graph_node(event.position)
 		
-		
-
+	
 func spawn_graph_node(node_position: Vector2):
 	var node = GraphNodeScene.instantiate()
 	node.position = node_position
@@ -73,6 +72,8 @@ func spawn_stack_item(text: String):
 	var square_instance = square.instantiate()
 	square_instance.get_node("Gnode/Label").text = text
 	stack_container.add_child(square_instance)
+	await get_tree().process_frame
+	$testing/ScrollContainer.ensure_control_visible(stack_container.get_child(stack_container.get_child_count() - 1))
 	
 func _on_line_edit_text_submitted(new_text):
 	if current_edit_node:

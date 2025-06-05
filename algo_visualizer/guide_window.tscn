@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbhbfuxu7ehms"]
+
+[ext_resource type="Texture2D" uid="uid://dw635df2f3s4y" path="res://assets/guide window.png" id="1_knjm0"]
+[ext_resource type="Texture2D" uid="uid://oafthldre56y" path="res://assets/hover.png" id="2_0ol6h"]
+
+[node name="GuideWindow" type="Sprite2D"]
+position = Vector2(637.5, 393.375)
+scale = Vector2(3.17199, 2.72526)
+texture = ExtResource("1_knjm0")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 0
+offset_left = -84.0
+offset_top = -132.0
+offset_right = 67.0
+offset_bottom = 93.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Hover" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(73.9273, 37.1878)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
+
+[node name="Hover2" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(75.1864, 74.5381)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
+
+[node name="Hover3" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(75.1864, 111.888)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
+
+[node name="Hover4" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(75.8159, 153.261)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
+
+[node name="Hover5" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(75.1864, 195.783)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
+
+[node name="Hover6" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(74.5568, 236.006)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
+
+[node name="Hover7" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(74.5568, 272.782)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
+
+[node name="Hover9" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(74.5568, 272.782)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
+
+[node name="Hover10" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(74.5568, 272.782)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
+
+[node name="Hover11" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(80.8523, 342.311)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
+
+[node name="Hover12" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(74.5568, 5.58377)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
+
+[node name="Hover8" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer"]
+position = Vector2(78.9637, 309.557)
+scale = Vector2(1, 1)
+texture = ExtResource("2_0ol6h")
