@@ -13,12 +13,15 @@
 - [ ] Align icons correctly
 - [ ] Add Stack implementation to DFS
 - [ ] Add Queue implementation to BFS
+- [x] Stack and queue layout
 - [ ] Implement DFS Logic
 - [ ] Implement BFS Logic
+- [ ] Fix scroller issue
+- [ ] Fix Line drawing signal
 - [x] Update the UI
 - [x] Handle sorting menu
 - [x] Array entrance animation
-- [x] Fixing labels' colors
+- [x] Fix labels' colors
 - [x] Reset functionality
 - [x] Assign GraphNode value
 - [x] Detect Mouse Clicks + instantiate graphNode
