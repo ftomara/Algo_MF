@@ -1,12 +1,13 @@
+ConfirmationDialog
+Button
+HBoxContainer
+Label
+TextureRect
 VBoxContainer
 ScrollContainer
 Control
 VScrollBar
-HBoxContainer
-Label
 Node2D
-Button
-TextureRect
 RichTextLabel
 Panel
 LineEdit
