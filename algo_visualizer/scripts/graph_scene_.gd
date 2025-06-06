@@ -140,14 +140,17 @@ func _on_node_clicked(node):
 			click_number = 2
 			print("Set as node_b: ", node_b.get_node("Gnode/Label").text)
 		
-		if node_a != null and node_b != null :
+		if click_number == 2 and node_a != null and node_b != null and node_a != node_b:
 			print("Different nodes - attempting to create connection")
 			_draw_line(node_a, node_b)
+			_reset_selection()
+		elif click_number == 2 and node_a == node_b:
 			_reset_selection()
 
 
 	
 	#print("After processing - click_number: ", click_number)
+	#print("After processing - click_number: ", click_number)d
 	#print("=== END DEBUG ===\n")
 	
 
@@ -177,17 +180,17 @@ func _delete_node(nodea):
 	var node_position = nodea.position + Vector2(37, 37)
 	var lines_to_remove = []
 	
-	for line in lines:
-		for point in line.points:
+	for l in lines:
+		for point in l.points:
 			if point == node_position:
-				lines_to_remove.append(line)
+				lines_to_remove.append(l)
 				break
 	
-	for line in lines_to_remove:
-		lines.erase(line)
-		if line.get_parent():
-			line.get_parent().remove_child(line)
-		line.queue_free()
+	for l in lines_to_remove:
+		lines.erase(l)
+		if l.get_parent():
+			l.get_parent().remove_child(l)
+		l.queue_free()
 	
 	# Remove the node
 	if nodea.get_parent():
@@ -206,13 +209,9 @@ func _draw_line(nodea, nodeb):
 		print("Connection already exists between these nodes!")
 		return
 	
-	var line = Line2D.new()
-
-	line.width = 5.0
-
-	line.width = 5.0  # Make lines more visible
-
-	line.default_color = Color.WHITE
+	var line_vector = Line2D.new()
+	line_vector.width = 5.0
+	line_vector.default_color = Color.WHITE
 	
 	# Add bidirectional connection
 	if not connections.has(nodea):
@@ -223,10 +222,10 @@ func _draw_line(nodea, nodeb):
 		connections[nodeb] = []
 	connections[nodeb].append(nodea)
 	
-	line.add_point(nodea.position + Vector2(37, 37))
-	line.add_point(nodeb.position + Vector2(37, 37))
-	lines.append(line)
-	line_layer.add_child(line)
+	line_vector.add_point(nodea.position + Vector2(37, 37))
+	line_vector.add_point(nodeb.position + Vector2(37, 37))
+	lines.append(line_vector)
+	line_layer.add_child(line_vector)
 	
 	print("SUCCESS: Line created between ", nodea.get_node("Gnode/Label").text, " and ", nodeb.get_node("Gnode/Label").text)
 	print("Total connections: ", connections.size())
