@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 TextureButton
+=======
+MenuBar
+ConfirmationDialog
+>>>>>>> 67d5584629659b033b9794aa5c8e1434612d0fd3
 Button
 ConfirmationDialog
 HBoxContainer

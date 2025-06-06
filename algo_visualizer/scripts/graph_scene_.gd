@@ -104,8 +104,13 @@ func spawn_stack_item(text: String):
 func _on_line_edit_text_submitted(new_text):
 	if current_edit_node and new_text != "":
 		current_edit_node.get_node("Gnode/Label").text = new_text
+
 		if not nodes.has(current_edit_node):
 			nodes.push_back(current_edit_node)
+
+		#if not nodes.has(current_edit_node):  # Prevent duplicates
+			#nodes.push_back(current_edit_node)
+
 		print("Node label set to:", new_text)
 		print("Total nodes: ", nodes.size())
 	_hide_value_window()
@@ -144,6 +149,8 @@ func _on_node_clicked(node):
 			print("Different nodes - attempting to create connection")
 			_draw_line(node_a, node_b)
 			_reset_selection()
+
+
 	
 	print("After processing - click_number: ", click_number)
 	print("=== END DEBUG ===\n")
@@ -208,7 +215,11 @@ func _draw_line(nodea, nodeb):
 		return
 	
 	var line = Line2D.new()
+
 	line.width = 5.0
+
+	line.width = 5.0  # Make lines more visible
+
 	line.default_color = Color.WHITE
 	
 	# Add bidirectional connection
@@ -254,11 +265,20 @@ func _on_user_guide_pressed():
 func _on_dfs_pressed():
 	print("DFS pressed")
 	menu_options.visible = false
+
+	# Add small delay to prevent interference
+	#await get_tree().process_frame
+
+
 	create_stack()
 
 func _on_bfs_pressed():
 	print("BFS pressed")
 	menu_options.visible = false
+
+
+	#await get_tree().process_frame
+
 	create_queue()
 
 func _on_delete_node_dialog_confirmed():
