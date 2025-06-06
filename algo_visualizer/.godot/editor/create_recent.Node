@@ -1,5 +1,6 @@
-ConfirmationDialog
+TextureButton
 Button
+ConfirmationDialog
 HBoxContainer
 Label
 TextureRect
@@ -12,4 +13,3 @@ RichTextLabel
 Panel
 LineEdit
 Sprite2D
-TextureButton
