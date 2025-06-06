@@ -1,8 +1,8 @@
+Label
 TextureButton
 Button
 ConfirmationDialog
 HBoxContainer
-Label
 TextureRect
 VBoxContainer
 ScrollContainer
@@ -12,4 +12,3 @@ Node2D
 RichTextLabel
 Panel
 LineEdit
-Sprite2D
