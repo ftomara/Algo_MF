@@ -116,48 +116,40 @@ func _on_line_edit_text_submitted(new_text):
 	_hide_value_window()
 
 func _on_node_clicked(node):
-	# Prevent overlapping selections and processing
-	if selection_lock or delete_node_dialog.visible:
-		print("Selection blocked - lock:", selection_lock, "dialog:", delete_node_dialog.visible)
-		return
 	
-	selection_lock = true
-	print("\n=== NODE CLICK DEBUG ===")
-	print("Clicked node: ", node.get_node("Gnode/Label").text)
-	print("Current click_number: ", click_number)
-	print("Current node_a: ", node_a.get_node("Gnode/Label").text if node_a else "null")
-	print("Current node_b: ", node_b.get_node("Gnode/Label").text if node_b else "null")
+	#print("\n=== NODE CLICK DEBUG ===")
+	#print("Clicked node: ", node.get_node("Gnode/Label").text)
+	#print("Current click_number: ", click_number)
+	#print("Current node_a: ", node_a.get_node("Gnode/Label").text if node_a else "null")
+	#print("Current node_b: ", node_b.get_node("Gnode/Label").text if node_b else "null")
 	
-	# First click - select node A
-	if click_number == 0:
+	if Current_mode == Modes.DeleteMode :
+		
 		node_a = node
-		click_number = 1
-		print("Set as node_a: ", node_a.get_node("Gnode/Label").text)
-		# Visual feedback could be added here (highlight node)
+		delete_node_dialog.popup_centered()
 		
-	# Second click - select node B and process connection
-	elif click_number == 1:
-		node_b = node
-		click_number = 2
-		print("Set as node_b: ", node_b.get_node("Gnode/Label").text)
+	if Current_mode == Modes.LineMode:
 		
-		# Process the connection immediately
-		if node_a == node_b:
-			print("Same node clicked twice - showing delete dialog")
-			delete_node_dialog.popup_centered()
-		else:
+		if click_number == 0:
+			node_a = node
+			click_number = 1
+			print("Set as node_a: ", node_a.get_node("Gnode/Label").text)
+
+		elif click_number == 1:
+			node_b = node
+			click_number = 2
+			print("Set as node_b: ", node_b.get_node("Gnode/Label").text)
+		
+		if node_a != null and node_b != null :
 			print("Different nodes - attempting to create connection")
 			_draw_line(node_a, node_b)
 			_reset_selection()
 
 
 	
-	print("After processing - click_number: ", click_number)
-	print("=== END DEBUG ===\n")
+	#print("After processing - click_number: ", click_number)
+	#print("=== END DEBUG ===\n")
 	
-	# Use a shorter delay and unlock selection
-	#await get_tree().create_timer(0.05).timeout
-	selection_lock = false
 
 func _reset_selection():
 	print("Resetting selection")
@@ -293,17 +285,23 @@ func _on_delete_node_dialog_canceled():
 	delete_node_dialog.hide()
 
 
-func _on_trash_pressed():
-	Current_mode = Modes.DeleteMode
-
-func _on_line_pressed():
-	Current_mode = Modes.LineMode
-
-
 func _on_trash_toggled(toggled_on):
-	if Current_mode == Modes.DeleteMode :
+	print("======== Trash TOGGLED==========")
+	if !toggled_on and Current_mode == Modes.DeleteMode :
 		Current_mode = Modes.NormalMode
+		print(" Trash toggle off")
 	
-	elif Current_mode == Modes.LineMode:
-		Current_mode= Modes.NormalMode	
-		
+	elif toggled_on and Current_mode == Modes.LineMode or Current_mode == Modes.NormalMode:
+		Current_mode= Modes.DeleteMode	
+		print(" Trash toggle on")		
+
+
+func _on_line_toggled(toggled_on):
+	print("======== Line TOGGLED==========")
+	if !toggled_on and Current_mode == Modes.LineMode :
+		Current_mode = Modes.NormalMode
+		print(" Line toggle off")
+	
+	elif toggled_on and Current_mode == Modes.DeleteMode or Current_mode == Modes.NormalMode:
+		Current_mode= Modes.LineMode	
+		print(" Line toggle on")		

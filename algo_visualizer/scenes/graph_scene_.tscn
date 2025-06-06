@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ddttwvkwuyjkp"]
+[gd_scene load_steps=40 format=3 uid="uid://ddttwvkwuyjkp"]
 
 [ext_resource type="Script" path="res://scripts/graph_scene_.gd" id="1_s8akx"]
 [ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_ea86d"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://bok0s7pwnd8g4" path="res://assets/recycle-bin.png" id="27_xqq70"]
 [ext_resource type="Texture2D" uid="uid://b1shcljtm1x78" path="res://assets/recycle-bin (1).png" id="28_a712f"]
 [ext_resource type="Texture2D" uid="uid://eaxfa1hjjy5b" path="res://assets/nodes.png" id="29_535tv"]
+[ext_resource type="Texture2D" uid="uid://cjs3givi35t8q" path="res://assets/nodes_1.png" id="29_wtnk6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn7nt"]
 content_margin_left = 8.0
@@ -492,6 +493,7 @@ offset_top = 57.0
 offset_right = 159.5
 offset_bottom = 89.0
 grow_horizontal = 2
+toggle_mode = true
 texture_normal = ExtResource("27_xqq70")
 texture_pressed = ExtResource("28_a712f")
 texture_hover = ExtResource("28_a712f")
@@ -508,9 +510,25 @@ offset_top = 57.0
 offset_right = 229.5
 offset_bottom = 89.0
 grow_horizontal = 2
-texture_normal = ExtResource("29_535tv")
+toggle_mode = true
+texture_normal = ExtResource("29_wtnk6")
+texture_pressed = ExtResource("29_535tv")
+texture_hover = ExtResource("29_535tv")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 64.5
+offset_top = 104.0
+offset_right = 318.5
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Draw Your graph here"
 
 [connection signal="pressed" from="speed" to="." method="_on_speed_pressed"]
 [connection signal="pressed" from="AlgoIcon" to="." method="_on_algo_icon_pressed"]
@@ -521,6 +539,5 @@ stretch_mode = 0
 [connection signal="pressed" from="UserGuide" to="." method="_on_user_guide_pressed"]
 [connection signal="canceled" from="DeleteNodeDialog" to="." method="_on_delete_node_dialog_canceled"]
 [connection signal="confirmed" from="DeleteNodeDialog" to="." method="_on_delete_node_dialog_confirmed"]
-[connection signal="pressed" from="trash" to="." method="_on_trash_pressed"]
 [connection signal="toggled" from="trash" to="." method="_on_trash_toggled"]
-[connection signal="pressed" from="line" to="." method="_on_line_pressed"]
+[connection signal="toggled" from="line" to="." method="_on_line_toggled"]
