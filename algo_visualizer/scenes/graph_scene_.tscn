@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://ddttwvkwuyjkp"]
 
-[ext_resource type="Script" path="res://scripts/graph_scene_.gd" id="1_s8akx"]
+[ext_resource type="Script" uid="uid://flcuxlv55fff" path="res://scripts/graph_scene_.gd" id="1_s8akx"]
 [ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_ea86d"]
 [ext_resource type="Texture2D" uid="uid://dbqlo4xfgpsti" path="res://assets/background.png" id="3_ljdnw"]
 [ext_resource type="FontFile" uid="uid://cuedit6mofbc7" path="res://fonts/Oswald-Regular.ttf" id="4_bcaus"]
@@ -39,7 +39,7 @@ texture = ExtResource("2_ea86d")
 texture = ExtResource("3_ljdnw")
 region_rect = Rect2(3, 0.588997, 1383, 668)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwil5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2t0k"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fadsu"]
@@ -48,7 +48,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acwp5"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2t0k"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwil5"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5sjh4"]
@@ -134,10 +134,10 @@ offset_top = 33.0
 offset_right = 365.0
 offset_bottom = 109.0
 grow_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_kwil5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p2t0k")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fadsu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_acwp5")
-theme_override_styles/focus = SubResource("StyleBoxFlat_p2t0k")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kwil5")
 icon = ExtResource("5_1ximb")
 flat = true
 alignment = 2

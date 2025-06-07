@@ -1,9 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2ok83c2axiek"]
-
-[ext_resource type="Script" path="res://Node2D.gd" id="1_uki16"]
+[gd_scene format=3 uid="uid://c2ok83c2axiek"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_uki16")
 
 [node name="OptionButton" type="OptionButton" parent="."]
 offset_left = 4.0
