@@ -9,11 +9,11 @@ var GraphNodeScene = preload("res://scenes/graph_node.tscn")
 var square = preload("res://scenes/square.tscn")
 
 var first_selected = null
-var current_edit_node: Control = null
+var current_edit_node: GraphNodePiece = null
 var click_number = 0
 var nodes = []
-var node_a : Control = null
-var node_b : Control = null
+var node_a : GraphNodePiece = null
+var node_b : GraphNodePiece = null
 var lines = []
 var connections = {}
 var is_processing_click = false
@@ -53,13 +53,14 @@ func _input(event):
 		
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		print("Clicked at:", event.position)
-		spawn_graph_node(event.position)
+		spawn_graph_node(get_global_mouse_position())
 
 func spawn_graph_node(node_position: Vector2):
+	print(node_position)
 	var node = GraphNodeScene.instantiate()
 	node.position = node_position
 	# Remove CONNECT_DEFERRED to prevent race conditions
-	node.connect("node_clicked", Callable(self, "_on_node_clicked"))
+	node.connect("node_clicked", _on_node_clicked)
 	add_child(node)
 	
 	current_edit_node = node
@@ -117,15 +118,16 @@ func _on_line_edit_text_submitted(new_text):
 
 func _on_node_clicked(node):
 	
-	#print("\n=== NODE CLICK DEBUG ===")
-	#print("Clicked node: ", node.get_node("Gnode/Label").text)
-	#print("Current click_number: ", click_number)
-	#print("Current node_a: ", node_a.get_node("Gnode/Label").text if node_a else "null")
-	#print("Current node_b: ", node_b.get_node("Gnode/Label").text if node_b else "null")
+	print("\n=== NODE CLICK DEBUG ===")
+	print("Clicked node: ", node.get_node("Gnode/Label").text)
+	print("Current click_number: ", click_number)
+	print("Current node_a: ", node_a.get_node("Gnode/Label").text if node_a else "null")
+	print("Current node_b: ", node_b.get_node("Gnode/Label").text if node_b else "null")
 	
 	if Current_mode == Modes.DeleteMode :
 		
 		node_a = node
+		node_a.update_state(GraphNodePiece.E_NODE_STATE.deleting)
 		delete_node_dialog.popup_centered()
 		
 	if Current_mode == Modes.LineMode:
@@ -134,12 +136,12 @@ func _on_node_clicked(node):
 			node_a = node
 			click_number = 1
 			print("Set as node_a: ", node_a.get_node("Gnode/Label").text)
-
+			node_a.update_state(GraphNodePiece.E_NODE_STATE.selected)
 		elif click_number == 1:
 			node_b = node
 			click_number = 2
 			print("Set as node_b: ", node_b.get_node("Gnode/Label").text)
-		
+			node_a.update_state(GraphNodePiece.E_NODE_STATE.selected)
 		if click_number == 2 and node_a != null and node_b != null and node_a != node_b:
 			print("Different nodes - attempting to create connection")
 			_draw_line(node_a, node_b)
@@ -157,6 +159,10 @@ func _on_node_clicked(node):
 func _reset_selection():
 	print("Resetting selection")
 	click_number = 0
+	if node_a:
+		node_a.update_state(GraphNodePiece.E_NODE_STATE.normal)
+	if node_b:
+		node_b.update_state(GraphNodePiece.E_NODE_STATE.normal)
 	node_a = null
 	node_b = null
 

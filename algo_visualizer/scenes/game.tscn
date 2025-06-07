@@ -1,8 +1,8 @@
 [gd_scene load_steps=37 format=3 uid="uid://dbn2fcne2kbxm"]
 
 [ext_resource type="FontFile" uid="uid://cuedit6mofbc7" path="res://fonts/Oswald-Regular.ttf" id="1_af32l"]
-[ext_resource type="Script" path="res://scripts/LineEdit.gd" id="1_hothc"]
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_k0oco"]
+[ext_resource type="Script" uid="uid://bol7sd2jni3kp" path="res://scripts/LineEdit.gd" id="1_hothc"]
+[ext_resource type="Script" uid="uid://drgaxqavvqewc" path="res://scripts/game.gd" id="1_k0oco"]
 [ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_g7tbj"]
 [ext_resource type="Texture2D" uid="uid://dbqlo4xfgpsti" path="res://assets/background.png" id="3_0p1jm"]
 [ext_resource type="FontFile" uid="uid://c7fjr8u8dk58u" path="res://fonts/Oswald-VariableFont_wght.ttf" id="4_fvjdd"]
