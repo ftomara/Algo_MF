@@ -10,14 +10,14 @@
 - [ ] Handle Graph Menu selection logic
 - [ ] Handle Animation speed (graph Scene)
 - [ ] Fix Animaion speed (sorting)
-- [ ] Align icons correctly
+- [x] Align icons correctly
 - [ ] Add Stack implementation to DFS
 - [ ] Add Queue implementation to BFS
 - [x] Stack and queue layout
-- [ ] Implement DFS Logic
+- [x] Implement DFS Logic
 - [ ] Implement BFS Logic
 - [ ] Fix scroller issue
-- [ ] Fix Line drawing signal
+- [x] Fix Line drawing signal
 - [x] Update the UI
 - [x] Handle sorting menu
 - [x] Array entrance animation
