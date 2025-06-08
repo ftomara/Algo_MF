@@ -2,7 +2,7 @@ extends Control
 class_name GraphNodePiece
 # graph_node.gd
 
-enum E_NODE_STATE {normal, selected, deleting}
+enum E_NODE_STATE { normal, selected, visited, deleting }
 var current_state : E_NODE_STATE = E_NODE_STATE.normal
 signal node_clicked(node)
 
@@ -12,12 +12,13 @@ func _gui_input(event):
 		print("node clicked")
 		emit_signal("node_clicked", self)
 
-func update_state(p_state: E_NODE_STATE):
-	current_state = p_state
-	match current_state:
-		E_NODE_STATE.normal:
-			modulate = Color.WHITE
+func update_state(state):
+	match state:
+		E_NODE_STATE.visited:
+			$Gnode.modulate = Color.GREEN
 		E_NODE_STATE.selected:
-			modulate = Color.YELLOW
+			$Gnode.modulate = Color.ORANGE
+		E_NODE_STATE.normal:
+			$Gnode.modulate = Color.WHITE
 		E_NODE_STATE.deleting:
-			modulate = Color.RED
+			$Gnode.modulate = Color.RED

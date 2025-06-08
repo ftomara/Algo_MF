@@ -1,2 +1,4 @@
-res://scenes/graph_node.tscn
 res://scenes/graph_scene_.tscn
+res://scenes/graph_node.tscn
+res://scripts/graph_node.gd
+res://scripts/graph_scene_.gd

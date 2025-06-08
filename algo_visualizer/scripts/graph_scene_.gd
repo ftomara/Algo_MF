@@ -3,6 +3,9 @@ extends Control
 const VERTICAL_SPACING := 60
 const HORIZONTAL_SPACING := 60
 
+var visited := {}  # Tracks visited nodes
+var stack := []    # Stack used for backtracking
+
 enum Modes {DeleteMode , LineMode , NormalMode}
 var Current_mode = Modes.NormalMode
 var GraphNodeScene = preload("res://scenes/graph_node.tscn")
@@ -67,6 +70,75 @@ func spawn_graph_node(node_position: Vector2):
 	node_value_window.visible = true
 	line_edit.clear()
 	line_edit.grab_focus()
+
+func DFS():
+	if nodes.is_empty():
+		print("No nodes in the graph.")
+		return
+	
+	var start_node = nodes[0]  # Optionally make this user-selectable
+	visited.clear()
+	stack.clear()
+	
+	await _dfs_visit(start_node)
+
+func _dfs_visit(node: GraphNodePiece) -> void:
+	if visited.has(node):
+		return
+	
+	# VISIT NODE
+	visited[node] = true
+	node.update_state(GraphNodePiece.E_NODE_STATE.visited)
+	await Add_to_stack(node)
+	await get_tree().create_timer(0.5).timeout  # Delay for visualization
+	
+	# EXPLORE NEIGHBORS
+	for neighbor in connections.get(node, []):
+		if not visited.has(neighbor):
+			var line = _get_line_between(node, neighbor)
+			if line:
+				line.default_color = Color.RED  # Highlight current traversal
+			await _dfs_visit(neighbor)
+			if line:
+				line.default_color = Color.GRAY  # Backtracked
+
+	# BACKTRACK (Pop stack)
+	await Remove_from_stack()
+	await get_tree().create_timer(0.5).timeout
+
+func Add_to_stack(node: GraphNodePiece):
+	if node == null:
+		push_warning("Attempted to add a null node to the stack.")
+		return
+
+	var square_instance = square.instantiate()
+	square_instance.get_node("Gnode/Label").text = node.get_node("Gnode/Label").text
+	stack_container.add_child(square_instance)
+	
+	await get_tree().process_frame
+	await get_tree().create_timer(0.5).timeout
+	
+	if stack_container.get_child_count() > 0:
+		$testing/ScrollContainer.ensure_control_visible(stack_container.get_child(stack_container.get_child_count() - 1))
+
+
+func Remove_from_stack():
+	if stack_container.get_child_count() > 0:
+		stack_container.get_child(stack_container.get_child_count() - 1).queue_free()
+	await get_tree().process_frame
+
+func _get_line_between(node1: GraphNodePiece, node2: GraphNodePiece) -> Line2D:
+	var p1 = node1.position + Vector2(37, 37)
+	var p2 = node2.position + Vector2(37, 37)
+	
+	for line in lines:
+		if line.points.size() == 2:
+			var a = line.points[0]
+			var b = line.points[1]
+			if (a == p1 and b == p2) or (a == p2 and b == p1):
+				return line
+	return null
+
 
 func create_queue():
 	for child in queue_container.get_children():
@@ -262,6 +334,7 @@ func _on_user_guide_pressed():
 func _on_dfs_pressed():
 	print("DFS pressed")
 	menu_options.visible = false
+	DFS()
 
 	# Add small delay to prevent interference
 	#await get_tree().process_frame
