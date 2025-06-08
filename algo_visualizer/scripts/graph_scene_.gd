@@ -5,6 +5,7 @@ const HORIZONTAL_SPACING := 60
 
 var visited := {}  # Tracks visited nodes
 var stack := []    # Stack used for backtracking
+var queue := []    
 
 enum Modes {DeleteMode , LineMode , NormalMode}
 var Current_mode = Modes.NormalMode
@@ -45,10 +46,10 @@ func _ready():
 	var dfs_btn = menu_options.get_node("DFS")
 	var bfs_btn = menu_options.get_node("BFS")
 	
-	if dfs_btn:
-		dfs_btn.pressed.connect(_on_dfs_pressed)
-	if bfs_btn:
-		bfs_btn.pressed.connect(_on_bfs_pressed)
+	#if dfs_btn:
+		#dfs_btn.pressed.connect(_on_dfs_pressed)
+	#if bfs_btn:
+		#bfs_btn.pressed.connect(_on_bfs_pressed)
 
 func _input(event):
 	if node_value_window.visible or delete_node_dialog.visible or speed_menu.visible or menu_options.visible or guide_window.visible:
@@ -70,6 +71,53 @@ func spawn_graph_node(node_position: Vector2):
 	node_value_window.visible = true
 	line_edit.clear()
 	line_edit.grab_focus()
+
+func BFS():
+	if nodes.is_empty():
+		print("No nodes in the graph.")
+		return
+	var start_node = nodes.front()
+	visited.clear()
+	queue.clear()
+	await _bfs_visit(start_node)
+
+func _bfs_visit(node: GraphNodePiece):
+	queue.append(node)
+	visited[node]=true
+	await Add_to_queue(node)
+	await get_tree().create_timer(0.3).timeout
+	while(not queue.is_empty()):
+		var visited_node = queue.front()
+		printt(visited_node.get_node("Gnode/Label").text)
+		visited_node.update_state(GraphNodePiece.E_NODE_STATE.visited)
+		await get_tree().create_timer(0.5).timeout
+		queue.pop_front()
+		await Remove_from_queue()
+		await get_tree().create_timer(0.3).timeout
+		for neighbor in connections.get(visited_node,[]):
+			if not visited.has(neighbor):
+				visited[neighbor]=true
+				queue.append(neighbor)
+				Add_to_queue(neighbor)
+				var l = _get_line_between(visited_node,neighbor)
+				if l :
+					l.default_color = Color.RED
+	
+
+func Add_to_queue(node: GraphNodePiece):
+	if node == null:
+		print("attempting to add null node to queue")
+		return
+	var text = node.get_node("Gnode/Label").text
+	spawn_square_in_queue(text)
+	await get_tree().process_frame
+	await get_tree().create_timer(0.5).timeout
+
+func Remove_from_queue():
+	if queue_container.get_child_count()>0:
+		queue_container.get_child(0).queue_free()
+	await get_tree().process_frame
+
 
 func DFS():
 	if nodes.is_empty():
@@ -151,16 +199,9 @@ func spawn_square_in_queue(text: String):
 	square_instance.get_node("Gnode/Label").text = text
 	queue_container.add_child(square_instance)
 
-func create_stack():
+func clear_stack():
 	for child in stack_container.get_children():
 		child.queue_free()
-	await get_tree().process_frame
-	
-	$StackPanel/Label.visible = true
-	for i in range(nodes.size()):
-		var reversed_index = nodes.size() - 1 - i
-		var text = nodes[reversed_index].get_node("Gnode/Label").text
-		await spawn_stack_item(text)
 
 func spawn_stack_item(text: String):
 	var square_instance = square.instantiate()
@@ -342,7 +383,8 @@ func _on_dfs_pressed():
 func _on_bfs_pressed():
 	print("BFS pressed")
 	menu_options.visible = false
-
+	#clear_queue()
+	BFS()
 
 	#await get_tree().process_frame
 
