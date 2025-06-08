@@ -88,6 +88,8 @@ func _dfs_visit(node: GraphNodePiece) -> void:
 	
 	# VISIT NODE
 	visited[node] = true
+	var text = node.get_node("Gnode/Label").text
+	await spawn_square_in_queue(text)
 	node.update_state(GraphNodePiece.E_NODE_STATE.visited)
 	await Add_to_stack(node)
 	await get_tree().create_timer(0.5).timeout  # Delay for visualization
@@ -95,12 +97,12 @@ func _dfs_visit(node: GraphNodePiece) -> void:
 	# EXPLORE NEIGHBORS
 	for neighbor in connections.get(node, []):
 		if not visited.has(neighbor):
-			var line = _get_line_between(node, neighbor)
-			if line:
-				line.default_color = Color.RED  # Highlight current traversal
+			var l = _get_line_between(node, neighbor)
+			if l:
+				l.default_color = Color.RED  # Highlight current traversal
 			await _dfs_visit(neighbor)
-			if line:
-				line.default_color = Color.GRAY  # Backtracked
+			if l:
+				l.default_color = Color.GRAY  # Backtracked
 
 	# BACKTRACK (Pop stack)
 	await Remove_from_stack()
@@ -131,24 +133,18 @@ func _get_line_between(node1: GraphNodePiece, node2: GraphNodePiece) -> Line2D:
 	var p1 = node1.position + Vector2(37, 37)
 	var p2 = node2.position + Vector2(37, 37)
 	
-	for line in lines:
-		if line.points.size() == 2:
-			var a = line.points[0]
-			var b = line.points[1]
+	for l in lines:
+		if l.points.size() == 2:
+			var a = l.points[0]
+			var b = l.points[1]
 			if (a == p1 and b == p2) or (a == p2 and b == p1):
-				return line
+				return l
 	return null
 
 
-func create_queue():
+func clear_queue():
 	for child in queue_container.get_children():
 		child.queue_free()
-	await get_tree().process_frame
-	
-	$StackPanel2/Label.visible = true
-	for i in range(nodes.size()):
-		var text = nodes[i].get_node("Gnode/Label").text
-		spawn_square_in_queue(text)
 
 func spawn_square_in_queue(text: String):
 	var square_instance = square.instantiate()
@@ -334,13 +330,14 @@ func _on_user_guide_pressed():
 func _on_dfs_pressed():
 	print("DFS pressed")
 	menu_options.visible = false
+	clear_queue()
 	DFS()
-
+ 
 	# Add small delay to prevent interference
 	#await get_tree().process_frame
 
 
-	create_stack()
+	#create_stack()
 
 func _on_bfs_pressed():
 	print("BFS pressed")
@@ -349,7 +346,7 @@ func _on_bfs_pressed():
 
 	#await get_tree().process_frame
 
-	create_queue()
+	#create_queue()
 
 func _on_delete_node_dialog_confirmed():
 	print("Delete confirmed")
