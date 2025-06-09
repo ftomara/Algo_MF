@@ -23,7 +23,7 @@ var connections = {}
 var is_processing_click = false
 var selection_lock = false  # Prevent overlapping selections
 
-@onready var queue_container = $StackPanel2/VBoxContainer
+@onready var queue_container = $QueuePanel/VBoxContainer
 @onready var stack_container = $testing/ScrollContainer/VBoxContainer
 @onready var node_value_window = $NodeValueWindow
 @onready var line_edit = $NodeValueWindow/LineEdit
@@ -84,7 +84,7 @@ func BFS():
 func _bfs_visit(node: GraphNodePiece):
 	queue.append(node)
 	visited[node]=true
-	await Add_to_queue(node)
+	await Add_to_queue(node , false)
 	await get_tree().create_timer(0.3).timeout
 	while(not queue.is_empty()):
 		var visited_node = queue.front()
@@ -98,13 +98,21 @@ func _bfs_visit(node: GraphNodePiece):
 			if not visited.has(neighbor):
 				visited[neighbor]=true
 				queue.append(neighbor)
-				Add_to_queue(neighbor)
+				Add_to_queue(neighbor, false)
 				var l = _get_line_between(visited_node,neighbor)
 				if l :
 					l.default_color = Color.RED
 	
 
-func Add_to_queue(node: GraphNodePiece):
+func Add_to_queue(node: GraphNodePiece , isDFS : bool):
+	
+	if isDFS == true :
+		$QueuePanel/queue.visible= false
+		$QueuePanel/output.visible = true
+	else :
+		$QueuePanel/queue.visible= true
+		$QueuePanel/output.visible = false			
+	
 	if node == null:
 		print("attempting to add null node to queue")
 		return
@@ -138,6 +146,7 @@ func _dfs_visit(node: GraphNodePiece) -> void:
 	visited[node] = true
 	var text = node.get_node("Gnode/Label").text
 	await spawn_square_in_queue(text)
+	$QueuePanel/output.visible = true
 	node.update_state(GraphNodePiece.E_NODE_STATE.visited)
 	await Add_to_stack(node)
 	await get_tree().create_timer(0.5).timeout  # Delay for visualization
@@ -157,6 +166,7 @@ func _dfs_visit(node: GraphNodePiece) -> void:
 	await get_tree().create_timer(0.5).timeout
 
 func Add_to_stack(node: GraphNodePiece):
+	$testing/Label2.visible = true
 	if node == null:
 		push_warning("Attempted to add a null node to the stack.")
 		return
@@ -175,6 +185,9 @@ func Add_to_stack(node: GraphNodePiece):
 func Remove_from_stack():
 	if stack_container.get_child_count() > 0:
 		stack_container.get_child(stack_container.get_child_count() - 1).queue_free()
+		
+	if stack_container.get_child_count() == 0 :
+		$StackPanel/Label.visible = false
 	await get_tree().process_frame
 
 func _get_line_between(node1: GraphNodePiece, node2: GraphNodePiece) -> Line2D:
@@ -382,6 +395,7 @@ func _on_dfs_pressed():
 
 func _on_bfs_pressed():
 	print("BFS pressed")
+	$testing/Label2.visible = false
 	menu_options.visible = false
 	#clear_queue()
 	BFS()
@@ -422,3 +436,16 @@ func _on_line_toggled(toggled_on):
 	elif toggled_on and Current_mode == Modes.DeleteMode or Current_mode == Modes.NormalMode:
 		Current_mode= Modes.LineMode	
 		print(" Line toggle on")		
+
+
+func _on_reset_pressed():
+	print("resetting")
+	for node in nodes:
+		node.update_state(node.E_NODE_STATE.normal)
+	for line in lines:
+		line.default_color = Color.WHITE
+	
+	clear_queue()
+	$testing/Label2.visible = false 
+	$QueuePanel/queue.visible = false
+	$QueuePanel/output.visible = false

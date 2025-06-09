@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://ddttwvkwuyjkp"]
 
-[ext_resource type="Script" uid="uid://flcuxlv55fff" path="res://scripts/graph_scene_.gd" id="1_s8akx"]
+[ext_resource type="Script" path="res://scripts/graph_scene_.gd" id="1_s8akx"]
 [ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_ea86d"]
 [ext_resource type="Texture2D" uid="uid://dbqlo4xfgpsti" path="res://assets/background.png" id="3_ljdnw"]
 [ext_resource type="FontFile" uid="uid://cuedit6mofbc7" path="res://fonts/Oswald-Regular.ttf" id="4_bcaus"]
@@ -39,7 +39,7 @@ texture = ExtResource("2_ea86d")
 texture = ExtResource("3_ljdnw")
 region_rect = Rect2(3, 0.588997, 1383, 668)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2t0k"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwil5"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fadsu"]
@@ -48,7 +48,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acwp5"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwil5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2t0k"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5sjh4"]
@@ -134,10 +134,10 @@ offset_top = 33.0
 offset_right = 365.0
 offset_bottom = 109.0
 grow_horizontal = 0
-theme_override_styles/focus = SubResource("StyleBoxFlat_p2t0k")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kwil5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fadsu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_acwp5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_kwil5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p2t0k")
 icon = ExtResource("5_1ximb")
 flat = true
 alignment = 2
@@ -362,6 +362,7 @@ visible = false
 layout_mode = 1
 
 [node name="StackPanel" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -389,12 +390,11 @@ size_flags_vertical = 3
 theme_override_constants/separation = 60
 
 [node name="Label" type="Label" parent="StackPanel"]
-visible = false
 layout_mode = 0
-offset_left = 23.0
-offset_top = 413.0
-offset_right = 95.0
-offset_bottom = 453.0
+offset_left = 7.0
+offset_top = 373.0
+offset_right = 79.0
+offset_bottom = 413.0
 theme_override_colors/font_shadow_color = Color(0.623529, 0.192157, 0.501961, 1)
 theme_override_colors/font_outline_color = Color(0.647059, 0.105882, 0.901961, 1)
 theme_override_constants/outline_size = 5
@@ -402,18 +402,18 @@ theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxLine_x5k7h")
 text = "Stack"
 
-[node name="StackPanel2" type="Control" parent="."]
+[node name="QueuePanel" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 96.0
-offset_top = -124.0
-offset_right = 402.0
-offset_bottom = 367.0
+offset_left = 159.0
+offset_top = -127.0
+offset_right = 465.0
+offset_bottom = 364.0
 grow_vertical = 0
 
-[node name="VBoxContainer" type="HBoxContainer" parent="StackPanel2"]
+[node name="VBoxContainer" type="HBoxContainer" parent="QueuePanel"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 7
@@ -421,27 +421,41 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -109.0
-offset_right = -30.0
-offset_bottom = -26.0
+offset_left = 23.0
+offset_top = -104.0
+offset_right = 43.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 60
 
-[node name="Label" type="Label" parent="StackPanel2"]
+[node name="queue" type="Label" parent="QueuePanel"]
 visible = false
 layout_mode = 0
-offset_left = 67.0
-offset_top = 335.0
-offset_right = 158.0
-offset_bottom = 375.0
+offset_left = -54.0
+offset_top = 348.0
+offset_right = 37.0
+offset_bottom = 388.0
 theme_override_colors/font_shadow_color = Color(0.623529, 0.192157, 0.501961, 1)
 theme_override_colors/font_outline_color = Color(0.647059, 0.105882, 0.901961, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxLine_x5k7h")
-text = "Visited"
+text = "Queue"
+
+[node name="output" type="Label" parent="QueuePanel"]
+visible = false
+layout_mode = 0
+offset_left = -54.0
+offset_top = 348.0
+offset_right = 37.0
+offset_bottom = 388.0
+theme_override_colors/font_shadow_color = Color(0.623529, 0.192157, 0.501961, 1)
+theme_override_colors/font_outline_color = Color(0.647059, 0.105882, 0.901961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxLine_x5k7h")
+text = "Output :"
 
 [node name="testing" type="Control" parent="."]
 layout_mode = 1
@@ -464,7 +478,7 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -128.0
+offset_left = -177.0
 offset_top = -127.0
 offset_right = 46.0
 offset_bottom = 376.0
@@ -477,6 +491,20 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 60
 
+[node name="Label2" type="Label" parent="testing"]
+visible = false
+layout_mode = 2
+offset_left = -114.0
+offset_top = 391.0
+offset_right = -42.0
+offset_bottom = 431.0
+theme_override_colors/font_shadow_color = Color(0.623529, 0.192157, 0.501961, 1)
+theme_override_colors/font_outline_color = Color(0.647059, 0.105882, 0.901961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxLine_x5k7h")
+text = "Stack"
+
 [node name="DeleteNodeDialog" type="ConfirmationDialog" parent="."]
 position = Vector2i(0, 36)
 size = Vector2i(360, 100)
@@ -488,10 +516,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 122.5
-offset_top = 57.0
-offset_right = 159.5
-offset_bottom = 89.0
+offset_left = 107.5
+offset_top = 47.0
+offset_right = 160.5
+offset_bottom = 93.0
 grow_horizontal = 2
 toggle_mode = true
 texture_normal = ExtResource("27_xqq70")
@@ -506,8 +534,8 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 192.5
-offset_top = 57.0
-offset_right = 229.5
+offset_top = 43.0
+offset_right = 245.5
 offset_bottom = 89.0
 grow_horizontal = 2
 toggle_mode = true
@@ -530,6 +558,26 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Draw Your graph here"
 
+[node name="output" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="output"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 462.0
+offset_top = 492.0
+offset_right = 581.0
+offset_bottom = 532.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="pressed" from="reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="speed" to="." method="_on_speed_pressed"]
 [connection signal="pressed" from="AlgoIcon" to="." method="_on_algo_icon_pressed"]
 [connection signal="pressed" from="MenuOptions/DFS" to="." method="_on_dfs_pressed"]
