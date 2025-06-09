@@ -419,21 +419,29 @@ func _on_algo_icon_pressed():
 
 func _on_selection_sort_pressed():
 	MenuOptions.visible = false
+	_on_button_pressed()
+	await get_tree().create_timer(0.5).timeout
 	selection_sort()
 
 
 func _on_bubble_sort_pressed():
 	MenuOptions.visible = false
+	_on_button_pressed()
+	await get_tree().create_timer(0.5).timeout
 	bubble_sort()
 
 
 func _on_insertion_sort_pressed():
 	MenuOptions.visible = false
+	_on_button_pressed()
+	await get_tree().create_timer(0.5).timeout
 	insertion_sort()
 
 
 func _on_quick_sort_pressed():
 	MenuOptions.visible = false
+	_on_button_pressed()
+	await get_tree().create_timer(0.5).timeout
 	start_sorting()
 
 
