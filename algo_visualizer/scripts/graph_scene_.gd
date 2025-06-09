@@ -13,8 +13,6 @@ var Current_mode = Modes.NormalMode
 var GraphNodeScene = preload("res://scenes/graph_node.tscn")
 var square = preload("res://scenes/square.tscn")
 
-@onready var output_2 = $QueuePanel/output2
-
 var first_selected = null
 var current_edit_node: GraphNodePiece = null
 var click_number = 0
@@ -25,7 +23,9 @@ var lines = []
 var connections = {}
 var is_processing_click = false
 var selection_lock = false  # Prevent overlapping selections
+var animation_speed = 1
 
+@onready var output_2 = $QueuePanel/output2
 @onready var queue_container = $QueuePanel/VBoxContainer
 @onready var stack_container = $testing/ScrollContainer/VBoxContainer
 @onready var node_value_window = $NodeValueWindow
@@ -88,17 +88,17 @@ func _bfs_visit(node: GraphNodePiece):
 	queue.append(node)
 	visited[node]=true
 	await Add_to_queue(node , false)
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(animation_speed).timeout
 	
 	while(not queue.is_empty()):
 		var visited_node = queue.front()
 		printt(visited_node.get_node("Gnode/Label").text)
 		output_2.text += visited_node.get_node("Gnode/Label").text + "  "
 		visited_node.update_state(GraphNodePiece.E_NODE_STATE.visited)
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(animation_speed).timeout
 		queue.pop_front()
 		await Remove_from_queue()
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(animation_speed).timeout
 		for neighbor in connections.get(visited_node,[]):
 			if not visited.has(neighbor):
 				visited[neighbor]=true
@@ -124,7 +124,7 @@ func Add_to_queue(node: GraphNodePiece , isDFS : bool):
 	var text = node.get_node("Gnode/Label").text
 	spawn_square_in_queue(text)
 	await get_tree().process_frame
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(animation_speed).timeout
 
 func Remove_from_queue():
 	if queue_container.get_child_count()>0:
@@ -157,7 +157,7 @@ func _dfs_visit(node: GraphNodePiece) -> void:
 	$QueuePanel/output.visible = true
 	node.update_state(GraphNodePiece.E_NODE_STATE.visited)
 	await Add_to_stack(node)
-	await get_tree().create_timer(0.5).timeout  # Delay for visualization
+	await get_tree().create_timer(animation_speed).timeout  # Delay for visualization
 	
 	# EXPLORE NEIGHBORS
 	for neighbor in connections.get(node, []):
@@ -171,7 +171,7 @@ func _dfs_visit(node: GraphNodePiece) -> void:
 
 	# BACKTRACK (Pop stack)
 	await Remove_from_stack()
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(animation_speed).timeout
 
 func Add_to_stack(node: GraphNodePiece):
 	$testing/Label2.visible = true
@@ -184,7 +184,7 @@ func Add_to_stack(node: GraphNodePiece):
 	stack_container.add_child(square_instance)
 	
 	await get_tree().process_frame
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(animation_speed).timeout
 	
 	if stack_container.get_child_count() > 0:
 		$testing/ScrollContainer.ensure_control_visible(stack_container.get_child(stack_container.get_child_count() - 1))
@@ -471,3 +471,25 @@ func reset_scene():
 
 func _on_arrow_pressed():
 	get_tree().change_scene_to_file("res://scenes/home_page.tscn")
+
+
+func _on_x_25_pressed():
+	animation_speed = 1.0
+	speed_menu.visible = false
+	
+
+
+func _on_x_1_pressed():
+	
+	animation_speed  = 0.5
+	speed_menu.visible = false
+
+
+func _on_x_1_5_pressed():
+	animation_speed = 0.3
+	speed_menu.visible = false
+
+
+func _on_x_2_pressed():
+	animation_speed = 0.25
+	speed_menu.visible = false

@@ -402,17 +402,17 @@ func _on_speed_pressed():
 	speedMenu.visible = !speedMenu.visible
 	
 func _on_x_25_pressed():
-	ANIMATION_DURATION = 0.25
+	ANIMATION_DURATION = 2.0
 	print ("0.25")
 
 func _on_x_1_pressed():
 	ANIMATION_DURATION = 1.0
 
 func _on_x_1_5_pressed():
-	ANIMATION_DURATION = 1.5
+	ANIMATION_DURATION = 0.5
 
 func _on_x_2_pressed():
-	ANIMATION_DURATION = 2.0
+	ANIMATION_DURATION = 0.25
 	
 func _on_algo_icon_pressed():
 	MenuOptions.visible = !MenuOptions.visible

@@ -1,8 +1,8 @@
 [gd_scene load_steps=38 format=3 uid="uid://dbn2fcne2kbxm"]
 
 [ext_resource type="FontFile" uid="uid://cuedit6mofbc7" path="res://fonts/Oswald-Regular.ttf" id="1_af32l"]
-[ext_resource type="Script" uid="uid://bol7sd2jni3kp" path="res://scripts/LineEdit.gd" id="1_hothc"]
-[ext_resource type="Script" uid="uid://drgaxqavvqewc" path="res://scripts/game.gd" id="1_k0oco"]
+[ext_resource type="Script" path="res://scripts/LineEdit.gd" id="1_hothc"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_k0oco"]
 [ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_g7tbj"]
 [ext_resource type="Texture2D" uid="uid://dbqlo4xfgpsti" path="res://assets/background.png" id="3_0p1jm"]
 [ext_resource type="FontFile" uid="uid://c7fjr8u8dk58u" path="res://fonts/Oswald-VariableFont_wght.ttf" id="4_fvjdd"]
@@ -40,17 +40,11 @@ content_margin_bottom = 20.0
 texture = ExtResource("5_1wbqd")
 region_rect = Rect2(-1.5, -3, 1386, 103)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6ny0"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xla4k"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6ny0"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2q3sr"]
-bg_color = Color(0.301961, 0.0901961, 0.721569, 0.52549)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7t62"]
-bg_color = Color(0.301961, 0.0901961, 0.721569, 0.384314)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rtk2"]
 bg_color = Color(0.301961, 0.0901961, 0.721569, 0.52549)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxg7b"]
@@ -60,7 +54,13 @@ content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(1, 1, 1, 0.654902)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulthw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7t62"]
+bg_color = Color(0.301961, 0.0901961, 0.721569, 0.384314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rtk2"]
+bg_color = Color(0.301961, 0.0901961, 0.721569, 0.52549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q85cv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fhrb"]
@@ -69,7 +69,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7j81"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q85cv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulthw"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Game" type="Control"]
@@ -147,12 +147,12 @@ text = " > "
 [node name="LineEdit" type="LineEdit" parent="Background/MarginContainer/Rows/InputArea/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_placeholder_color = Color(0.647059, 0.466667, 0.956863, 1)
 theme_override_colors/font_color = Color(0.643137, 0.466667, 0.956863, 1)
+theme_override_colors/font_placeholder_color = Color(0.647059, 0.466667, 0.956863, 1)
 theme_override_fonts/font = ExtResource("1_af32l")
 theme_override_font_sizes/font_size = 36
-theme_override_styles/focus = SubResource("StyleBoxEmpty_h6ny0")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xla4k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h6ny0")
 placeholder_text = "Enter Your Numbers"
 script = ExtResource("1_hothc")
 
@@ -170,9 +170,9 @@ theme_override_colors/font_color = Color(0.627451, 0.552941, 0.752941, 1)
 theme_override_fonts/font = ExtResource("4_fvjdd")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxFlat_2q3sr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bxg7b")
 theme_override_styles/hover = SubResource("StyleBoxFlat_f7t62")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1rtk2")
-theme_override_styles/normal = SubResource("StyleBoxFlat_bxg7b")
 allow_reselect = true
 metadata/_edit_use_anchors_ = true
 
@@ -186,10 +186,10 @@ offset_top = 28.0
 offset_right = -27.0
 offset_bottom = 104.0
 grow_horizontal = 0
-theme_override_styles/focus = SubResource("StyleBoxFlat_ulthw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_q85cv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5fhrb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_i7j81")
-theme_override_styles/normal = SubResource("StyleBoxFlat_q85cv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ulthw")
 icon = ExtResource("8_tun8x")
 flat = true
 alignment = 2
