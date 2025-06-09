@@ -7,10 +7,13 @@ var visited := {}  # Tracks visited nodes
 var stack := []    # Stack used for backtracking
 var queue := []    
 
+
 enum Modes {DeleteMode , LineMode , NormalMode}
 var Current_mode = Modes.NormalMode
 var GraphNodeScene = preload("res://scenes/graph_node.tscn")
 var square = preload("res://scenes/square.tscn")
+
+@onready var output_2 = $QueuePanel/output2
 
 var first_selected = null
 var current_edit_node: GraphNodePiece = null
@@ -86,9 +89,11 @@ func _bfs_visit(node: GraphNodePiece):
 	visited[node]=true
 	await Add_to_queue(node , false)
 	await get_tree().create_timer(0.3).timeout
+	
 	while(not queue.is_empty()):
 		var visited_node = queue.front()
 		printt(visited_node.get_node("Gnode/Label").text)
+		output_2.text += visited_node.get_node("Gnode/Label").text + "  "
 		visited_node.update_state(GraphNodePiece.E_NODE_STATE.visited)
 		await get_tree().create_timer(0.5).timeout
 		queue.pop_front()
@@ -125,7 +130,10 @@ func Remove_from_queue():
 	if queue_container.get_child_count()>0:
 		queue_container.get_child(0).queue_free()
 	await get_tree().process_frame
-
+	
+	if queue_container.get_child_count() ==0 :
+		$QueuePanel/queue.visible = false 
+		output_2.visible = true
 
 func DFS():
 	if nodes.is_empty():
@@ -159,7 +167,7 @@ func _dfs_visit(node: GraphNodePiece) -> void:
 				l.default_color = Color.RED  # Highlight current traversal
 			await _dfs_visit(neighbor)
 			if l:
-				l.default_color = Color.GRAY  # Backtracked
+				l.default_color = Color.GREEN  # Backtracked
 
 	# BACKTRACK (Pop stack)
 	await Remove_from_stack()
@@ -206,6 +214,10 @@ func _get_line_between(node1: GraphNodePiece, node2: GraphNodePiece) -> Line2D:
 func clear_queue():
 	for child in queue_container.get_children():
 		child.queue_free()
+	$QueuePanel/queue.visible = false 
+	
+
+
 
 func spawn_square_in_queue(text: String):
 	var square_instance = square.instantiate()
@@ -382,23 +394,22 @@ func _on_user_guide_pressed():
 	guide_window.visible = !guide_window.visible
 
 func _on_dfs_pressed():
+	reset_scene()
 	print("DFS pressed")
 	menu_options.visible = false
 	clear_queue()
 	DFS()
- 
-	# Add small delay to prevent interference
-	#await get_tree().process_frame
-
-
+	
 	#create_stack()
 
 func _on_bfs_pressed():
+	reset_scene()
 	print("BFS pressed")
 	$testing/Label2.visible = false
 	menu_options.visible = false
 	#clear_queue()
 	BFS()
+	
 
 	#await get_tree().process_frame
 
@@ -439,13 +450,22 @@ func _on_line_toggled(toggled_on):
 
 
 func _on_reset_pressed():
+	reset_scene()
+
+func reset_scene():
 	print("resetting")
 	for node in nodes:
 		node.update_state(node.E_NODE_STATE.normal)
 	for line in lines:
 		line.default_color = Color.WHITE
+	output_2.text = "Output : "
+	
 	
 	clear_queue()
 	$testing/Label2.visible = false 
 	$QueuePanel/queue.visible = false
-	$QueuePanel/output.visible = false
+	$QueuePanel/output.visible = false	
+	output_2.visible = false
+	$QueuePanel/output2.visible = false
+	
+	

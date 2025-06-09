@@ -334,12 +334,11 @@ icon = ExtResource("24_73sqc")
 flat = true
 
 [node name="guideWindow" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 140.0
 offset_top = 117.0
-offset_right = 425.0
-offset_bottom = 333.0
+offset_right = 547.0
+offset_bottom = 434.0
 texture = ExtResource("25_eeoro")
 expand_mode = 1
 
@@ -347,13 +346,18 @@ expand_mode = 1
 layout_mode = 0
 offset_left = 14.0
 offset_top = 21.0
-offset_right = 240.0
-offset_bottom = 44.0
+offset_right = 351.0
+offset_bottom = 204.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "- Right click to add a new node
 
--Click on any two nodes to 
-create an edge"
+- Get into the link mode to connect nodes 
+
+-Click on any two nodes to create an edge
+
+-Get into the deletion mode to delete nodes
+
+-Reset the scene using the reset icon"
 
 [node name="LinesLayer" type="Node2D" parent="."]
 
@@ -450,6 +454,20 @@ offset_left = -54.0
 offset_top = 348.0
 offset_right = 37.0
 offset_bottom = 388.0
+theme_override_colors/font_shadow_color = Color(0.623529, 0.192157, 0.501961, 1)
+theme_override_colors/font_outline_color = Color(0.647059, 0.105882, 0.901961, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxLine_x5k7h")
+text = "Output :"
+
+[node name="output2" type="Label" parent="QueuePanel"]
+visible = false
+layout_mode = 0
+offset_left = -59.0
+offset_top = 289.0
+offset_right = 53.0
+offset_bottom = 329.0
 theme_override_colors/font_shadow_color = Color(0.623529, 0.192157, 0.501961, 1)
 theme_override_colors/font_outline_color = Color(0.647059, 0.105882, 0.901961, 1)
 theme_override_constants/outline_size = 5

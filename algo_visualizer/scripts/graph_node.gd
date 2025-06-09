@@ -17,7 +17,7 @@ func update_state(state):
 		E_NODE_STATE.visited:
 			$Gnode.modulate = Color.GREEN
 		E_NODE_STATE.selected:
-			$Gnode.modulate = Color.ORANGE
+			$Gnode.modulate = Color.PLUM
 		E_NODE_STATE.normal:
 			$Gnode.modulate = Color.WHITE
 		E_NODE_STATE.deleting:
