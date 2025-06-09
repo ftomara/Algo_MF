@@ -427,3 +427,7 @@ func _on_insertion_sort_pressed():
 
 func _on_quick_sort_pressed():
 	start_sorting()
+
+
+func _on_arrow_pressed():
+	get_tree().change_scene_to_file("res://scenes/home_page.tscn")

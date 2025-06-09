@@ -1,8 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://dbn2fcne2kbxm"]
+[gd_scene load_steps=38 format=3 uid="uid://dbn2fcne2kbxm"]
 
 [ext_resource type="FontFile" uid="uid://cuedit6mofbc7" path="res://fonts/Oswald-Regular.ttf" id="1_af32l"]
-[ext_resource type="Script" uid="uid://bol7sd2jni3kp" path="res://scripts/LineEdit.gd" id="1_hothc"]
-[ext_resource type="Script" uid="uid://drgaxqavvqewc" path="res://scripts/game.gd" id="1_k0oco"]
+[ext_resource type="Script" path="res://scripts/LineEdit.gd" id="1_hothc"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_k0oco"]
 [ext_resource type="Texture2D" uid="uid://38b7uiombv1i" path="res://assets/panel_ground.png" id="2_g7tbj"]
 [ext_resource type="Texture2D" uid="uid://dbqlo4xfgpsti" path="res://assets/background.png" id="3_0p1jm"]
 [ext_resource type="FontFile" uid="uid://c7fjr8u8dk58u" path="res://fonts/Oswald-VariableFont_wght.ttf" id="4_fvjdd"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bjlc36uw0fef" path="res://assets/algorithm (3) 2.png" id="21_uijmx"]
 [ext_resource type="Texture2D" uid="uid://btu75lmaju2sm" path="res://assets/menuBG.png" id="22_b70sw"]
 [ext_resource type="Texture2D" uid="uid://oafthldre56y" path="res://assets/hover.png" id="23_lfeys"]
+[ext_resource type="Texture2D" uid="uid://bp8nxy2dn3obv" path="res://back arrow.png" id="24_i8b7q"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mohrj"]
 content_margin_left = 8.0
@@ -180,9 +181,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -170.0
+offset_left = -103.0
 offset_top = 28.0
-offset_right = -94.0
+offset_right = -27.0
 offset_bottom = 104.0
 grow_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_q85cv")
@@ -194,7 +195,7 @@ flat = true
 alignment = 2
 
 [node name="info" parent="." instance=ExtResource("7_mkhgp")]
-position = Vector2(1048, 29)
+position = Vector2(934, -206)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_4nj0u")
@@ -204,10 +205,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -257.0
-offset_top = 29.0
-offset_right = -184.0
-offset_bottom = 102.0
+offset_left = -195.0
+offset_top = 23.0
+offset_right = -122.0
+offset_bottom = 96.0
 grow_horizontal = 0
 icon = ExtResource("17_6ich0")
 flat = true
@@ -365,6 +366,20 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 text = "Quick Sort"
 
+[node name="arrow" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 39.0
+offset_top = -41.0
+offset_right = 86.0
+offset_bottom = 6.0
+grow_vertical = 2
+texture_normal = ExtResource("24_i8b7q")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="text_submitted" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="text_submitted" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/LineEdit" to="Background/MarginContainer/Rows/InputArea/HBoxContainer/LineEdit" method="_on_text_submitted"]
 [connection signal="item_selected" from="algo_option" to="." method="_on_option_button_item_selected"]
@@ -380,3 +395,4 @@ text = "Quick Sort"
 [connection signal="pressed" from="MenuOptions/BubbleSort" to="." method="_on_bubble_sort_pressed"]
 [connection signal="pressed" from="MenuOptions/InsertionSort" to="." method="_on_insertion_sort_pressed"]
 [connection signal="pressed" from="MenuOptions/QuickSort" to="." method="_on_quick_sort_pressed"]
+[connection signal="pressed" from="arrow" to="." method="_on_arrow_pressed"]

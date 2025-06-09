@@ -468,4 +468,6 @@ func reset_scene():
 	output_2.visible = false
 	$QueuePanel/output2.visible = false
 	
-	
+
+func _on_arrow_pressed():
+	get_tree().change_scene_to_file("res://scenes/home_page.tscn")
