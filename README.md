@@ -8,8 +8,8 @@
 - [x] Connect nodes with edges
 - [ ] Add undo/redo functionality
 - [x] Handle Graph Menu selection logic
-- [ ] Handle Animation speed (graph Scene)
-- [ ] Fix Animaion speed (sorting)
+- [x] Handle Animation speed (graph Scene)
+- [x] Fix Animaion speed (sorting)
 - [x] Align icons correctly
 - [x] Add Stack implementation to DFS
 - [x] Add Queue implementation to BFS
