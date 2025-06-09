@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cejdc0exop7hk"]
 
-[ext_resource type="Script" path="res://scripts/graph_node.gd" id="1_58q5e"]
+[ext_resource type="Script" uid="uid://b5ms35q4aj8rb" path="res://scripts/graph_node.gd" id="1_58q5e"]
 [ext_resource type="Texture2D" uid="uid://r0a7hkfm50g4" path="res://assets/GraphNode (1).png" id="2_x01bc"]
 
 [node name="graphNode" type="Control"]

@@ -35,7 +35,11 @@ func _ready():
 	style_box.set_border_width_all(3)
 	style_box.set_border_color(Color("#ffffffff"))
 
-	style_box2.set_bg_color(Color("#a577f4"))# purble  4d17b886
+	style_box2.set_bg_color(Color("#d7bbfe"))# purble  4d17b886
+	style_box2.set_corner_radius_all(8)
+	style_box2.set_border_width_all(3)
+	style_box2.set_border_color(Color("#ffffffff"))
+	
 	style_box3.set_bg_color(Color("#96c8ff86"))#blue
 	style_box3.set_corner_radius_all(8)
 	style_box3.set_border_width_all(3)
@@ -76,12 +80,12 @@ func insertion_sort():
 func animate_insertion(key):
 	var sprite1 = sprites[key+1].get_node("Sprite2D") 
 	var sprite2 = sprites[key].get_node("Sprite2D") 
-	sprite1.get_node("min_label/Sprite2D").visible = true
+	sprite1.get_node("arrow_min").visible = true
 	sprite1.get_node("min_label").text = "key"
 	var delaytimer = create_delay_timer(0.2)
 	await delaytimer.timeout		
 	sprite1.get_node("min_label").text = ""
-	sprite1.get_node("min_label/Sprite2D").visible = false
+	sprite1.get_node("arrow_min").visible = false
 	var tween1 = create_tween()
 	var tween2 = create_tween()
 	var original_position1 = sprite1.position
@@ -107,12 +111,12 @@ func selection_sort() -> void:
 				#animate_swap(j , min_index , false)
 				min_index = j
 		# Swap the found minimum element with the current element
-		sprites[min_index].get_node("Sprite2D/min_label/Sprite2D").visible = true
+		sprites[min_index].get_node("Sprite2D/arrow_min").visible = true
 		sprites[min_index].get_node("Sprite2D/min_label").text = "min"
 		var delaytimer = create_delay_timer(0.2)
 		await delaytimer.timeout		
 		sprites[min_index].get_node("Sprite2D/min_label").text = ""
-		sprites[min_index].get_node("Sprite2D/min_label/Sprite2D").visible = false
+		sprites[min_index].get_node("Sprite2D/arrow_min").visible = false
 		await animate_swap(i , min_index , false)		
 		if min_index != i:
 			await animate_swap(i , min_index , true)
@@ -226,7 +230,7 @@ func _on_line_edit_text_submitted(new_text):
 		input_response.get_node("Sprite2D/d").text = str(arr2[i])
 		var sp = input_response.get_node("Sprite2D")
 		sp.position = Vector2(sp.position.x+(i*7) , sp.position.y)
-		input_response.get_node("Sprite2D/min_label/Sprite2D").visible = false
+		input_response.get_node("Sprite2D/arrow_min").visible = false
 		sprites.append(input_response)
 		history.add_child(input_response)
 		#print(history.get_child(i).get_node("Sprite2D").position)
@@ -256,7 +260,7 @@ func reset_sprite_colors():
 	label.text=" "
 	info.get_node("Button").reset()
 	for i in range(sprites.size()):
-		sprites[i].get_node("Sprite2D/d").set("theme_override_styles/normal", style_box3)		
+		sprites[i].get_node("Sprite2D/d").set("theme_override_styles/normal", style_box2)		
 
 func _on_option_button_item_selected(index):
 	$AudioStreamPlayer.play()	
@@ -414,18 +418,22 @@ func _on_algo_icon_pressed():
 	MenuOptions.visible = !MenuOptions.visible
 
 func _on_selection_sort_pressed():
+	MenuOptions.visible = false
 	selection_sort()
 
 
 func _on_bubble_sort_pressed():
+	MenuOptions.visible = false
 	bubble_sort()
 
 
 func _on_insertion_sort_pressed():
+	MenuOptions.visible = false
 	insertion_sort()
 
 
 func _on_quick_sort_pressed():
+	MenuOptions.visible = false
 	start_sorting()
 
 

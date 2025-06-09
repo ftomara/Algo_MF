@@ -7,19 +7,27 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbpop"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 40
-border_width_top = 40
-border_width_right = 40
-border_width_bottom = 40
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 border_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejq36"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyi5x"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 40
-border_width_top = 40
-border_width_right = 40
-border_width_bottom = 40
-border_color = Color(0.886275, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8n01r"]
 content_margin_left = 30.0
@@ -34,13 +42,6 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="input_response_cols" type="HBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1025.0
-offset_bottom = -539.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
@@ -53,19 +54,21 @@ texture = ExtResource("2_1m07r")
 
 [node name="jlabel" type="Label" parent="Sprite2D"]
 visible = false
-offset_left = -375.0
-offset_top = -377.0
-offset_right = 381.0
-offset_bottom = 377.0
+z_index = 1
+offset_left = -54.0
+offset_top = -46.0
+offset_right = 54.0
+offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_tbpop")
 
 [node name="ilabel" type="Label" parent="Sprite2D"]
 visible = false
-offset_left = -375.0
-offset_top = -377.0
-offset_right = 381.0
-offset_bottom = 377.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_ejq36")
+z_index = 1
+offset_left = -54.0
+offset_top = -46.0
+offset_right = 54.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_pyi5x")
 
 [node name="d" type="Label" parent="Sprite2D"]
 anchors_preset = 15
@@ -86,28 +89,28 @@ vertical_alignment = 1
 
 [node name="pivot" type="Label" parent="Sprite2D"]
 visible = false
-offset_left = -171.611
-offset_top = -704.495
-offset_right = 194.389
-offset_bottom = -407.495
+offset_left = -36.2713
+offset_top = -113.516
+offset_right = 36.7287
+offset_bottom = -53.5158
 theme_override_fonts/font = ExtResource("2_5chjn")
-theme_override_font_sizes/font_size = 200
-text = "Pivot
-"
+theme_override_font_sizes/font_size = 40
+text = "Pivot"
 
 [node name="min_label" type="Label" parent="Sprite2D"]
-offset_left = -241.526
-offset_top = -1353.37
-offset_right = 280.474
-offset_bottom = -401.374
-theme_override_colors/font_color = Color(0.384314, 0.0705882, 0.639216, 0.52549)
+visible = false
+offset_left = -38.9916
+offset_top = -112.774
+offset_right = 43.0084
+offset_bottom = -51.7739
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_5chjn")
-theme_override_font_sizes/font_size = 200
+theme_override_font_sizes/font_size = 36
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/min_label"]
-position = Vector2(241.526, 766.293)
+[node name="arrow_min" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0.906801, -86.0642)
 rotation = -0.00481534
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.117443, 0.0878569)
 texture = ExtResource("4_h1h6k")

@@ -1,7 +1,6 @@
+res://scenes/input_response_cols.tscn
 res://scenes/graph_scene_.tscn
 res://scenes/graph_node.tscn
-res://scripts/graph_scene_.gd
-res://scenes/home_page.gd
 res://scenes/home_page.tscn
 res://scenes/game.tscn
 res://scripts/game.gd
