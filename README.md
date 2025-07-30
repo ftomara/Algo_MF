@@ -1,7 +1,16 @@
+Try it out : https://menna-jaheen.itch.io/algomf
+
+Demo : https://drive.google.com/file/d/1d4BScsUYGS58mviOkatwUgKYmxKsc4g7/view?usp=sharing
+
+<img width="1916" height="958" alt="Screenshot 2025-07-30 192836" src="https://github.com/user-attachments/assets/fd0eb57e-0b4f-4816-a50a-d23f31304a2b" />
+
+
+<img width="1918" height="973" alt="Screenshot 2025-07-30 195038" src="https://github.com/user-attachments/assets/a6d74358-19e5-4f6a-b20c-5cada91c5f35" />
+
+<img width="1918" height="973" alt="Screenshot 2025-07-30 195038" src="https://github.com/user-attachments/assets/01da6fd9-891c-4284-aed4-ddd04a4fe2a3" />
+
+
 ## ✅ TODO List
-
-
-![image](https://github.com/user-attachments/assets/efdfaf7e-c443-4216-a895-c31bf5d938ea)
 
 
 - [x] Add node deletion feature
