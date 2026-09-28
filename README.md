@@ -1,7 +1,5 @@
 Try it out : https://menna-jaheen.itch.io/algomf
 
-Demo : https://drive.google.com/file/d/1d4BScsUYGS58mviOkatwUgKYmxKsc4g7/view?usp=sharing
-
 <img width="1916" height="958" alt="Screenshot 2025-07-30 192836" src="https://github.com/user-attachments/assets/fd0eb57e-0b4f-4816-a50a-d23f31304a2b" />
 
 
